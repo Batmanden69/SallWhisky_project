@@ -8,7 +8,7 @@ public class Fad {
     private String leverrandør;
     private Lager lager;
 
-    public Fad(int id, int størrelse, int antalLiterPåfyldt, String fadType,String leverrandør) {
+    public Fad(int id, int størrelse, int antalLiterPåfyldt, String fadType, String leverrandør) {
         this.id = id;
         this.størrelse = størrelse;
         this.antalLiterPåfyldt = antalLiterPåfyldt;
@@ -61,7 +61,16 @@ public class Fad {
     }
 
     public void setLager(Lager lager) {
-        this.lager = lager;
+        if (this.lager != lager) {
+            Lager oldLager = this.lager;
+            if (oldLager != null) {
+                oldLager.removeFad(this);
+            }
+            this.lager = lager;
+            if (lager != null) {
+                lager.addFad(this);
+            }
+        }
     }
 
 
