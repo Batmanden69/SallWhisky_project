@@ -4,12 +4,14 @@ public class Plads {
 
     private int reolNr;
     private int hyldeNr;
+    private boolean optaget;
     private Lager lager;
 
     public Plads(int reolNr, int hyldeNr, Lager lager) {
         this.reolNr = reolNr;
         this.hyldeNr = hyldeNr;
         this.lager = lager;
+        this.optaget = false;
     }
 
     public int getReolNr() {
@@ -26,6 +28,14 @@ public class Plads {
 
     public void setHyldeNr(int hyldeNr) {
         this.hyldeNr = hyldeNr;
+    }
+
+    public void setOptaget(boolean optaget) {
+        this.optaget = optaget;
+    }
+
+    public boolean isOptaget() {
+        return optaget;
     }
 
     public void setLager(Lager lager) {

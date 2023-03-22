@@ -73,5 +73,13 @@ public class Fad {
         }
     }
 
+    public String lægPåPlads (Lager lager){
+        for (Plads p :  lager.getPladsListe()){
+            if (!p.isOptaget()){
+                setLager(lager);
+            }
+        }
 
+        return null;
+    }
 }
