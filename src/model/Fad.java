@@ -5,15 +5,16 @@ public class Fad {
     private int størrelse;
     private int antalLiterPåfyldt;
     private String fadType;
-    private String leverrandør;
+    private String leverandør;
     private Lager lager;
+
 
     public Fad(int id, int størrelse, int antalLiterPåfyldt, String fadType, String leverrandør) {
         this.id = id;
         this.størrelse = størrelse;
         this.antalLiterPåfyldt = antalLiterPåfyldt;
         this.fadType = fadType;
-        this.leverrandør = leverrandør;
+        this.leverandør = leverrandør;
     }
 
     public int getId() {
@@ -48,12 +49,12 @@ public class Fad {
         this.fadType = fadType;
     }
 
-    public String getLeverrandør() {
-        return leverrandør;
+    public String getLeverandør() {
+        return leverandør;
     }
 
-    public void setLeverrandør(String leverrandør) {
-        this.leverrandør = leverrandør;
+    public void setLeverandør(String leverandør) {
+        this.leverandør = leverandør;
     }
 
     public Lager getLager() {
@@ -73,13 +74,20 @@ public class Fad {
         }
     }
 
-    public String lægPåPlads (Lager lager){
+    public void lægPåPlads (Lager lager){
+        setLager(lager);
+        boolean found = false;
         for (Plads p :  lager.getPladsListe()){
-            if (!p.isOptaget()){
-                setLager(lager);
+            if (!p.isOptaget() && !found){
+                p.setOptaget(true);
+                p.setFad(this);
+                found = true;
             }
         }
+    }
 
-        return null;
+    @Override
+    public String toString() {
+        return " " + id;
     }
 }
