@@ -65,4 +65,9 @@ public class Lager {
     public ArrayList<Plads> getPladsListe() {
         return new ArrayList<>(pladsListe);
     }
+
+    @Override
+    public String toString() {
+        return "lager "+navn+ " pladserTotal "+pladserTotal+ " Fade "+fadListe+" pladser "+pladsListe;
+    }
 }
