@@ -30,7 +30,7 @@ public class Lager {
     }
 
     public ArrayList<Fad> getFadListe() {
-        return new fadListe;
+        return new ArrayList<>(fadListe);
     }
 
     public void addFad(Fad fad){
@@ -59,5 +59,9 @@ public class Lager {
             pladsListe.remove(plads);
             plads.setLager(null);
         }
+    }
+
+    public ArrayList<Plads> getPladsListe() {
+        return new ArrayList<>(pladsListe);
     }
 }
