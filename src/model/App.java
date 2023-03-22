@@ -20,7 +20,5 @@ public class App {
         fad3.lægPåPlads(lager1);
 
         System.out.println(lager1.getPladsListe());
-
-
     }
 }
