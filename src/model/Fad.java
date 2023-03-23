@@ -7,6 +7,7 @@ public class Fad {
     private String fadType;
     private String leverandør;
     private Lager lager;
+    private Destillat destillat;
 
 
     public Fad(int id, int størrelse, int antalLiterPåfyldt, String fadType, String leverrandør) {
@@ -74,6 +75,20 @@ public class Fad {
         }
     }
 
+    public void setDestillat(Destillat destillat) {
+        if (this.destillat != destillat){
+            Destillat oldDes = this.destillat;
+            if (oldDes != null){
+                oldDes.removeFad(this);
+            }
+            this.destillat = destillat;
+            if (destillat != null){
+                destillat.addFad(this);
+            }
+        }
+    }
+
+
     public void lægPåPlads (Lager lager){
         setLager(lager);
         boolean found = false;
@@ -90,4 +105,6 @@ public class Fad {
     public String toString() {
         return " " + id;
     }
+
+
 }
