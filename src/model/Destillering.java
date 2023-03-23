@@ -23,4 +23,13 @@ public class Destillering {
         this.rygmatriale = rygmatriale;
         this.kommentar = kommentar;
     }
+
+    public ArrayList<Destillat> getDestillatList() {
+        return new ArrayList<>(destillatList);
+    }
+    public Destillat createDestillat(String historie, Destillering destillering){
+        Destillat des = new Destillat(historie,this);
+        destillatList.add(des);
+        return des;
+    }
 }

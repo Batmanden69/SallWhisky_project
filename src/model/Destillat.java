@@ -7,7 +7,7 @@ public class Destillat {
     private Destillering destillering;
     private final ArrayList<Fad> fadList = new ArrayList<>();
 
-    public Destillat(String historie, Destillering destillering) {
+     Destillat(String historie, Destillering destillering) {
         this.historie = historie;
         this.destillering = destillering;
     }
@@ -22,10 +22,6 @@ public class Destillat {
 
     public Destillering getDestillering() {
         return destillering;
-    }
-
-    public void setDestillering(Destillering destillering) {
-        this.destillering = destillering;
     }
 
     public ArrayList<Fad> getFadList() {
@@ -44,4 +40,5 @@ public class Destillat {
             fad.setDestillat(null);
         }
     }
+
 }
