@@ -30,11 +30,17 @@ public class Destillat {
         return fadList;
     }
 
-
-    public void removeLagring(Lagring lagring) {
-         if()
+    public void addFad (Fad fad){
+        if (!fadList.contains(fad)){
+            fadList.add(fad);
+            fad.setDestillat(this);
+        }
+    }
+    public void removeFad(Fad fad){
+        if (fadList.contains(fad)){
+            fadList.remove(fad);
+            fad.setDestillat(null);
+        }
     }
 
-    public void addLagring(Lagring lagring) {
-    }
 }
