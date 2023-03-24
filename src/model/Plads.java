@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Plads {
 
     private int reol;
@@ -61,3 +63,4 @@ public class Plads {
 
     }
 }
+

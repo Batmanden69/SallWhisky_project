@@ -9,10 +9,13 @@ public class Lagring {
     private LocalDate startDato;
     private LocalDate slutDato;
 
-    public Lagring(Fad fad, Destillat destillat, LocalDate startDato, LocalDate slutDato) {
+    public Lagring(Fad fad, Destillat destillat, LocalDate startDato) {
         this.fad = fad;
         this.destillat = destillat;
         this.startDato = startDato;
+    }
+
+    public void setSlutDato(LocalDate slutDato) {
         this.slutDato = slutDato;
     }
 
@@ -50,5 +53,14 @@ public class Lagring {
 
             }
         }
+    }
+
+    public LocalDate getSlutDato() {
+        return slutDato;
+    }
+
+    @Override
+    public String toString() {
+        return "Fad: " + fad + ",    " + "destillat: " + destillat + ",     " + "Startdato: " + startDato;
     }
 }
