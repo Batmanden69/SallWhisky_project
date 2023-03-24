@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Destillat {
     private ArrayList<Lagring> lagringer = new ArrayList<>();
     private Destillering destillering;
-    private final ArrayList<Fad> fadList = new ArrayList<>();
     private double mængde;
 
     Destillat(double mængde, Destillering destillering) {
@@ -21,9 +20,6 @@ public class Destillat {
         return destillering;
     }
 
-    public ArrayList<Fad> getFadList() {
-        return fadList;
-    }
 
     public void addLagring(Lagring lagring) {
         if (!lagringer.contains(lagring)) {
