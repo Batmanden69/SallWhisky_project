@@ -50,7 +50,7 @@ public class Destillering {
 
     public void hældPåFad(Fad fad){
         Destillat destillat = createDestillat(fad.getStørrelse(),this);
-        Lagring lagring = fad.createLagring(destillat, LocalDate.now());
+        Lagring lagring = fad.createLagring(destillat,LocalDate.now());
         destillat.addLagring(lagring);
         antalLiter -= fad.getStørrelse();
 
