@@ -32,10 +32,10 @@ public class Destillat {
         }
     }
 
-    public void removeFad(Fad fad) {
-        if (fadList.contains(fad)) {
-            fadList.remove(fad);
-            fad.setDestillat(null);
+    public void removeLagring(Lagring lagring) {
+        if (lagringer.contains(lagring)) {
+            lagringer.remove(lagring);
+            lagring.setDestillat(null);
         }
     }
 
