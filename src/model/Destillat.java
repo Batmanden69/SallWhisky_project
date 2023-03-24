@@ -20,6 +20,9 @@ public class Destillat {
         return destillering;
     }
 
+    public double getMængde() {
+        return mængde;
+    }
 
     public void addLagring(Lagring lagring) {
         if (!lagringer.contains(lagring)) {
