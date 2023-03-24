@@ -27,8 +27,8 @@ public class Destillering {
     public ArrayList<Destillat> getDestillatList() {
         return new ArrayList<>(destillatList);
     }
-    public Destillat createDestillat(String historie, double mængde, Destillering destillering){
-        Destillat des = new Destillat(historie,mængde,this);
+    public Destillat createDestillat(double mængde, Destillering destillering){
+        Destillat des = new Destillat(mængde,this);
         destillatList.add(des);
         return des;
     }
