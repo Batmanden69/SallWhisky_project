@@ -1,4 +1,7 @@
-package model;
+package gui;
+
+import model.Fad;
+import model.Lager;
 
 public class App {
     public static void main(String[] args) {
