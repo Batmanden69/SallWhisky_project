@@ -6,9 +6,11 @@ public class Destillat {
     private String historie;
     private Destillering destillering;
     private final ArrayList<Fad> fadList = new ArrayList<>();
+    private double mængde;
 
-     Destillat(String historie, Destillering destillering) {
+     Destillat(String historie,double mængde, Destillering destillering) {
         this.historie = historie;
+        this.mængde = mængde;
         this.destillering = destillering;
     }
 
