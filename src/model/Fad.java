@@ -1,5 +1,8 @@
 package model;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 public class Fad {
     private int id;
     private int størrelse;
@@ -7,7 +10,7 @@ public class Fad {
     private String fadType;
     private String leverandør;
     private Lager lager;
-    private Destillat destillat;
+    private final ArrayList<Lagring> lagringsList = new ArrayList<>();
 
 
     public Fad(int id, int størrelse, int antalLiterPåfyldt, String fadType, String leverrandør) {
@@ -75,19 +78,24 @@ public class Fad {
         }
     }
 
-    public void setDestillat(Destillat destillat) {
-        if (this.destillat != destillat){
-            Destillat oldDes = this.destillat;
-            if (oldDes != null){
-                oldDes.removeFad(this);
-            }
-            this.destillat = destillat;
-            if (destillat != null){
-                destillat.addFad(this);
-            }
+    public void removeLagring(Lagring lagring) {
+        if (lagringsList.contains(lagring)){
+            lagringsList.remove(lagring);
+            lagring.setFad(this);
         }
     }
 
+    public void addLagring(Lagring lagring) {
+        if (!lagringsList.contains(lagring)){
+            lagringsList.add(lagring);
+            lagring.setFad(this);
+        }
+    }
+    public Lagring createLagring (Destillat destillat, LocalDate startDato, LocalDate slutDato){
+        Lagring lagring = new Lagring(this,destillat,startDato,slutDato);
+        lagringsList.add(lagring);
+        return lagring;
+    }
 
     public void lægPåPlads (Lager lager){
         setLager(lager);
@@ -105,6 +113,7 @@ public class Fad {
     public String toString() {
         return " " + id;
     }
+
 
 
 }
