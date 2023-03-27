@@ -10,6 +10,7 @@ public class Fad {
     private String fadType;
     private String leverandør;
     private Lager lager;
+    private Plads plads;
     private final ArrayList<Lagring> lagringList = new ArrayList<>();
 
 
