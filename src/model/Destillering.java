@@ -53,8 +53,5 @@ public class Destillering {
         Lagring lagring = fad.createLagring(destillat,LocalDate.now());
         destillat.addLagring(lagring);
         antalLiter -= fad.getStørrelse();
-
-
-
     }
 }
