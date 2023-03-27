@@ -66,6 +66,22 @@ public class Lager {
         return new ArrayList<>(pladsListe);
     }
 
+    public static Plads findLedigPlads(ArrayList<Plads> list, boolean target){
+        Plads plads = null;
+        int i = 0;
+        while (plads == null && i < list.size()){
+            Plads p = list.get(i);
+            if (p.isOptaget() == target)
+                plads = p;
+            else {
+                i++;
+            }
+        }
+        return plads;
+    }
+
+
+
     @Override
     public String toString() {
         return "lager "+navn+ " pladserTotal "+pladserTotal+ " Fade "+fadListe+" pladser "+pladsListe;

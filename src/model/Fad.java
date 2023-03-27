@@ -106,26 +106,13 @@ public class Fad {
         return lagring;
     }
 
-    private static Plads findLedigPlads(ArrayList<Plads> list, boolean target){
-        Plads plads = null;
-        int i = 0;
-        while (plads == null && i < list.size()){
-            Plads p = list.get(i);
-            if (p.isOptaget() == target)
-                plads = p;
-            else {
-                i++;
-            }
-        }
-        return plads;
-    }
 
     public void lægPåPlads(Lager lager){
-        setLager(lager);
-        Plads plads = findLedigPlads(lager.getPladsListe(), false);
-        if (plads != null){
+        Plads plads = lager.findLedigPlads(lager.getPladsListe(), false);
+        if (!plads.isOptaget()){
             plads.setOptaget(true);
-            plads.setFad(this);
+            lager.addFad(this);
+            setLager(lager);
         }
     }
 

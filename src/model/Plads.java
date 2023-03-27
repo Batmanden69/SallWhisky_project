@@ -8,7 +8,6 @@ public class Plads {
     private int hylde;
     private boolean optaget;
     private Lager lager;
-    private Fad fad;
 
     Plads(int reol, int hylde, Lager lager) {
         this.reol = reol;
@@ -49,17 +48,9 @@ public class Plads {
         return optaget;
     }
 
-    public void setFad(Fad fad) {
-        this.fad = fad;
-    }
-
-    public Fad getFad() {
-        return fad;
-    }
-
     @Override
     public String toString() {
-        return "reol "+ reol + " - hylde " + hylde + " - " + optaget + " - "+"Fad " +fad;
+        return "reol " + reol + " - hylde " + hylde + " - " + optaget;
 
     }
 }
