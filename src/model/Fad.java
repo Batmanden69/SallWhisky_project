@@ -130,68 +130,6 @@ public class Fad {
     }
 
 
-
-//    public static Plads linearSearchKunde(ArrayList<Plads> list, String target) {
-//        Plads plads = null;
-//        int i = 0;
-//        while (plads == null && i < list.size()) {
-//            Plads p = list.get(i);
-//            if (p.getNavn().equals(name))
-//                kunde = k;
-//            else {
-//                i++;
-//            }
-//        }
-//        return kunde;
-//    }
-//
-//    private int søgLedigPlads(ArrayList<Plads> pladsListe, Plads target) {
-//        //Tilføj try/catch-blok, der tjekker om lageret allerede er fuldt, og hvis det er, så kastes en exception.
-//        int indeks = -1;
-//        int i = 0;
-//        while (indeks == -1 && i < pladsListe.size()) {
-//            Plads k = pladsListe.get(i);
-//            if (k.equals(target))
-//                indeks = i;
-//            else
-//                i++;
-//        }
-//        return indeks;
-//    }
-//
-//    public void lægPåPlads(Lager lager) {
-//        setLager(lager);
-//        int indeks = søgLedigPlads(lager.getPladsListe(),);
-//        if (indeks != -1) {
-//            Plads plads = lager.getPladsListe().get(indeks);
-//            plads.setFad(this);
-//            setLager(lager);
-//        }
-//    }
-//
-//    boolean found = false;
-//        for (Plads p :  lager.getPladsListe()){
-//        if (!p.isOptaget() && !found){
-//            p.setOptaget(true);
-//            p.setFad(this);
-//            found = true;
-//        }
-//    }
-//
-//    public static int linearSearchList(ArrayList<String> list, String target) {
-//        int indeks = -1;
-//        int i = 0;
-//        while (indeks == -1 && i < list.size()) {
-//            String k = list.get(i);
-//            if (k.equals(target))
-//                indeks = i;
-//            else
-//                i++;
-//        }
-//        return indeks;
-//    }
-
-
     public int mængdeTilbage() {
         return størrelse - antalLiterPåfyldt;
     }
