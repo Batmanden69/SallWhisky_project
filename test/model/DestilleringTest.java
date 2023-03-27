@@ -9,7 +9,7 @@ class DestilleringTest {
     @Test
     void hældPåFadTC1() {
         //Arrange
-        Destillering destillering = new Destillering(500,1)
+       // Destillering destillering = new Destillering(500,1)
 
         //Act
 
