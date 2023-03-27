@@ -9,7 +9,6 @@ public class Fad {
     private int antalLiterPåfyldt;
     private String fadType;
     private String leverandør;
-    private Lager lager;
     private Plads plads;
     private final ArrayList<Lagring> lagringList = new ArrayList<>();
 
