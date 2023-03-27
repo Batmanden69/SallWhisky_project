@@ -21,8 +21,7 @@ public class Fad {
     }
 
     public Lagring getNuværendeLagring() {
-        if (mængdeTilbage() == størrelse)
-            return null;
+        if (mængdeTilbage() == størrelse) return null;
         else {
             return lagringsList.get(lagringsList.size() - 1);
         }
@@ -106,13 +105,12 @@ public class Fad {
         return lagring;
     }
 
-    private static Plads findLedigPlads(ArrayList<Plads> list, boolean target){
+    private static Plads findLedigPlads(ArrayList<Plads> list, boolean target) {
         Plads plads = null;
         int i = 0;
-        while (plads == null && i < list.size()){
+        while (plads == null && i < list.size()) {
             Plads p = list.get(i);
-            if (p.isOptaget() == target)
-                plads = p;
+            if (p.isOptaget() == target) plads = p;
             else {
                 i++;
             }
@@ -120,10 +118,10 @@ public class Fad {
         return plads;
     }
 
-    public void lægPåPlads(Lager lager){
+    public void lægPåPlads(Lager lager) {
         setLager(lager);
         Plads plads = findLedigPlads(lager.getPladsListe(), false);
-        if (plads != null){
+        if (plads.isOptaget() == false) {
             plads.setOptaget(true);
             plads.setFad(this);
         }

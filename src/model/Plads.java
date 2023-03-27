@@ -59,7 +59,7 @@ public class Plads {
 
     @Override
     public String toString() {
-        return "reol "+ reol + " - hylde " + hylde + " - " + optaget + " - "+"Fad " +fad;
+        return  "reol "+ reol + " - hylde " + hylde + " - " + optaget + " - "+"Fad " +fad;
 
     }
 }
