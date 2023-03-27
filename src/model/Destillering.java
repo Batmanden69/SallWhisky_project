@@ -54,7 +54,5 @@ public class Destillering {
         destillat.addLagring(lagring);
         antalLiter -= fad.getStørrelse();
 
-
-
     }
 }
