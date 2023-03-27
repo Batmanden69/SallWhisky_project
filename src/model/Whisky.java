@@ -25,4 +25,17 @@ public class Whisky {
         return desillatList;
     }
 
+    public void removeDestillat(Destillat destillat) {
+        if (desillatList.contains(destillat)){
+            desillatList.remove(destillat);
+            destillat.setWhisky(null);
+        }
+    }
+
+    public void addDestillat(Destillat destillat) {
+        if (!desillatList.contains(destillat)){
+            desillatList.add(destillat);
+            destillat.setWhisky(this);
+        }
+    }
 }

@@ -6,6 +6,7 @@ public class Destillat {
     private ArrayList<Lagring> lagringList = new ArrayList<>();
     private Destillering destillering;
     private int mængde;
+    private Whisky whisky;
 
     Destillat(int mængde, Destillering destillering) {
         this.mængde = mængde;
@@ -41,6 +42,18 @@ public class Destillat {
         if (lagringList.contains(lagring)) {
             lagringList.remove(lagring);
             lagring.setDestillat(null);
+        }
+    }
+    public void setWhisky(Whisky whisky){
+        if (this.whisky != whisky){
+            Whisky oldWhisky = this.whisky;
+            if (oldWhisky != null){
+                oldWhisky.removeDestillat(this);
+            }
+            this.whisky = whisky;
+            if (whisky != null){
+                whisky.addDestillat(this);
+            }
         }
     }
 
