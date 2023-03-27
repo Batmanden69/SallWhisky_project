@@ -9,7 +9,7 @@ public class Fad {
     private int antalLiterPåfyldt;
     private String fadType;
     private String leverandør;
-    private Lager lager;
+    private Plads plads;
     private final ArrayList<Lagring> lagringList = new ArrayList<>();
 
 
@@ -68,20 +68,9 @@ public class Fad {
         this.leverandør = leverandør;
     }
 
-    public Lager getLager() {
-        return lager;
-    }
-
-    public void setLager(Lager lager) {
-        if (this.lager != lager) {
-            Lager oldLager = this.lager;
-            if (oldLager != null) {
-                oldLager.removeFad(this);
-            }
-            this.lager = lager;
-            if (lager != null) {
-                lager.addFad(this);
-            }
+    public void setPlads (Plads plads){
+        if (this.plads !=plads){
+            this.plads = plads;
         }
     }
 
@@ -106,24 +95,9 @@ public class Fad {
         return lagring;
     }
 
-    private static Plads findLedigPlads(ArrayList<Plads> list, boolean target){
-        Plads plads = null;
-        int i = 0;
-        while (plads == null && i < list.size()){
-            Plads p = list.get(i);
-            if (p.isOptaget() == target)
-                plads = p;
-            else {
-                i++;
-            }
-        }
-        return plads;
-    }
-
-    public void lægPåPlads(Lager lager){
-        setLager(lager);
-        Plads plads = findLedigPlads(lager.getPladsListe(), false);
-        if (plads != null){
+    public void lægPåPlads(Lager lager) {
+        Plads plads = lager.findLedigPlads(lager.getPladsListe(), false);
+        if (plads != null) {
             plads.setOptaget(true);
             plads.setFad(this);
         }

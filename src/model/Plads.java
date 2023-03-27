@@ -8,6 +8,7 @@ public class Plads {
     private int hylde;
     private boolean optaget;
     private Lager lager;
+    private Fad fad;
 
     Plads(int reol, int hylde, Lager lager) {
         this.reol = reol;
@@ -46,6 +47,16 @@ public class Plads {
 
     public boolean isOptaget() {
         return optaget;
+    }
+
+    public Fad getFad() {
+        return fad;
+    }
+
+    public void setFad(Fad fad) {
+        if (this.fad != fad) {
+            this.fad = fad;
+        }
     }
 
     @Override

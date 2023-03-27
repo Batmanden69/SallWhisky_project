@@ -5,13 +5,11 @@ import java.util.ArrayList;
 public class Lager {
     private String navn;
     private int pladserTotal;
-    private ArrayList<Fad> fadListe;
     private ArrayList<Plads> pladsListe;
 
     public Lager(String navn, int ledigePladser) {
         this.navn = navn;
         this.pladserTotal = ledigePladser;
-        this.fadListe = new ArrayList<>();
         this.pladsListe = new ArrayList<>();
     }
 
@@ -31,23 +29,6 @@ public class Lager {
         this.pladserTotal = pladserTotal;
     }
 
-    public ArrayList<Fad> getFadListe() {
-        return new ArrayList<>(fadListe);
-    }
-
-    public void addFad(Fad fad) {
-        if (!fadListe.contains(fad)) {
-            fadListe.add(fad);
-            fad.setLager(this);
-        }
-    }
-
-    public void removeFad(Fad fad) {
-        if (fadListe.contains(fad)) {
-            fadListe.remove(fad);
-            fad.setLager(null);
-        }
-    }
 
     public Plads createPlads(int reol, int hylde, Lager lager) {
         Plads plads = new Plads(reol, hylde, this);
@@ -66,7 +47,7 @@ public class Lager {
         return new ArrayList<>(pladsListe);
     }
 
-    public static Plads findLedigPlads(ArrayList<Plads> list, boolean target){
+    public Plads findLedigPlads(ArrayList<Plads> list, boolean target){
         Plads plads = null;
         int i = 0;
         while (plads == null && i < list.size()){
@@ -84,6 +65,6 @@ public class Lager {
 
     @Override
     public String toString() {
-        return "lager "+navn+ " pladserTotal "+pladserTotal+ " Fade "+fadListe+" pladser "+pladsListe;
+        return "lager "+navn+ " pladserTotal "+pladserTotal+ " pladser "+pladsListe;
     }
 }
