@@ -13,7 +13,7 @@ public class Destillering {
     private String rygematriale;
     private String kommentar;
 
-    private final ArrayList<Destillat>destillatList = new ArrayList<>();
+    private final ArrayList<Destillat> destillatList = new ArrayList<>();
 
     public Destillering(int antalLiter, int maltBatch, String kornsort, int newMakeNr, double alkoholProcent, String rygematriale, String kommentar) {
         this.antalLiter = antalLiter;

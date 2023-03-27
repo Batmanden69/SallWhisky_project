@@ -10,7 +10,7 @@ public class Fad {
     private String fadType;
     private String leverandør;
     private Lager lager;
-    private final ArrayList<Lagring> lagringsList = new ArrayList<>();
+    private final ArrayList<Lagring> lagringList = new ArrayList<>();
 
 
     public Fad(int id, int størrelse, String fadType, String leverrandør) {
@@ -24,7 +24,7 @@ public class Fad {
         if (mængdeTilbage() == størrelse)
             return null;
         else {
-            return lagringsList.get(lagringsList.size() - 1);
+            return lagringList.get(lagringList.size() - 1);
         }
     }
 
@@ -86,22 +86,22 @@ public class Fad {
     }
 
     public void removeLagring(Lagring lagring) {
-        if (lagringsList.contains(lagring)) {
-            lagringsList.remove(lagring);
+        if (lagringList.contains(lagring)) {
+            lagringList.remove(lagring);
             lagring.setFad(this);
         }
     }
 
     public void addLagring(Lagring lagring) {
-        if (!lagringsList.contains(lagring)) {
-            lagringsList.add(lagring);
+        if (!lagringList.contains(lagring)) {
+            lagringList.add(lagring);
             lagring.setFad(this);
         }
     }
 
     public Lagring createLagring(Destillat destillat, LocalDate startDato) {
         Lagring lagring = new Lagring(this, destillat, startDato);
-        lagringsList.add(lagring);
+        lagringList.add(lagring);
         setAntalLiterPåfyldt(destillat.getMængde());
         return lagring;
     }
