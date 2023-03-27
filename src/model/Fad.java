@@ -56,6 +56,10 @@ public class Fad {
         return fadType;
     }
 
+    public Plads getPlads() {
+        return plads;
+    }
+
     public void setFadType(String fadType) {
         this.fadType = fadType;
     }
