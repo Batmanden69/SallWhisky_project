@@ -2,6 +2,7 @@ package model;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -56,4 +57,24 @@ class FadTest {
         //Assert
         assertEquals(2, fadListe.size());
     }
+
+//    @Test
+//    void getNuværendeLagringTC1() {
+//        //Arrange
+//        Lager lager1 = new Lager("Lager1", 10);
+//        Fad fad1 = new Fad(1, 10,  "Fad1", "Leverandør1");
+//        lager1.createPlads(1, 1, lager1);
+//        Destillering destillering1 = new Destillering(100, 1, "Kornsort1", 1, 40, null, null);
+//        Destillat destillat = new Destillat(10, destillering1);
+//        LocalDate dato = LocalDate.now();
+//
+//        //Act
+//        destillering1.hældPåFad(fad1);
+//        Lagring lagring = fad1.createLagring(destillat, dato);
+//        lagring.setFad(fad1);
+//
+//
+//        //Assert
+//        assertEquals(fad1.getNuværendeLagring(), lagring);
+//    }
 }

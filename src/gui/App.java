@@ -36,5 +36,6 @@ public class App {
         System.out.println(fad1.getNuværendeLagring());
         System.out.println(fad3.getNuværendeLagring());
 
+
     }
 }
