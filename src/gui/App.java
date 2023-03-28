@@ -3,6 +3,9 @@ package gui;
 
 import model.*;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 public class App {
     public static void main(String[] args) {
         Lager lager1 = new Lager("Lager1", 10);
@@ -24,14 +27,31 @@ public class App {
         fad3.lægPåPlads(lager1);
         fad4.lægPåPlads(lager1);
 
-        Destillering destillering1 = new Destillering(100, 1, "Kornsort1", 1, 40, null, null);
-        Destillering destillering2 = new Destillering(100, 2, "Kornsort2", 2, 40, null, null);
+        Destillering destillering1 = new Destillering(100, 1, "Kornsort1", 40, null, null);
+        Destillering destillering2 = new Destillering(100, 2, "Kornsort2", 40, null, null);
 
-        Destillat destillat1 = destillering1.createDestillat(10);
-        Destillat destillat2 = destillering1.createDestillat(10);
-        System.out.println(destillat1.getDestillatId());
-        System.out.println(destillat2.getDestillatId());
-//        destillering1.hældPåFad(fad1);
+        destillering1.hældPåFad(fad1);
+        destillering1.hældPåFad(fad2);
+        destillering2.hældPåFad(fad2);
+
+
+        Whisky whisky1 = new Whisky(1, 100);
+
+        whisky1.addFad(fad1);
+        whisky1.addFad(fad2);
+
+        System.out.println(whisky1.destillatHistorik());
+
+        System.out.println(whisky1.destilleringHistorik());
+
+        System.out.println(whisky1.lagringHistorik());
+
+//        Lagring lagring1 = new Lagring(fad1, destillering1.createDestillat(10), LocalDate.now());
+//        lagring1.setSlutDato(LocalDate.now().plus(7, ChronoUnit.DAYS));
+//
+//        System.out.println(lagring1.getLagringsperiode());
+
+
 //        System.out.println(destillering1.getAntalLiter());
 //        destillering1.hældPåFad(fad2);
 //        System.out.println(destillering1.getAntalLiter());

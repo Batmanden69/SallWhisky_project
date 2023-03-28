@@ -13,11 +13,11 @@ public class Fad {
     private final ArrayList<Lagring> lagringList = new ArrayList<>();
 
 
-    public Fad(int id, int størrelse, String fadType, String leverrandør) {
+    public Fad(int id, int størrelse, String fadType, String leverandør) {
         this.id = id;
         this.størrelse = størrelse;
         this.fadType = fadType;
-        this.leverandør = leverrandør;
+        this.leverandør = leverandør;
     }
 
     public Lagring getNuværendeLagring() {
@@ -60,6 +60,10 @@ public class Fad {
         return plads;
     }
 
+    public ArrayList<Lagring> getLagringList() {
+        return new ArrayList<>(lagringList);
+    }
+
     public void setFadType(String fadType) {
         this.fadType = fadType;
     }
@@ -72,8 +76,8 @@ public class Fad {
         this.leverandør = leverandør;
     }
 
-    public void setPlads (Plads plads){
-        if (this.plads !=plads){
+    public void setPlads(Plads plads) {
+        if (this.plads != plads) {
             this.plads = plads;
         }
     }

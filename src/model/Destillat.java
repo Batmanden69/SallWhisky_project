@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Destillat {
-    private ArrayList<Lagring> lagringList = new ArrayList<>();
+    private ArrayList<Lagring> destillatHistorik = new ArrayList<>();
     private Destillering destillering;
     private int destillatId;
     private static int count = 1;
@@ -22,8 +22,8 @@ public class Destillat {
     }
 
 
-    public ArrayList<Lagring> getLagringList() {
-        return new ArrayList<>(lagringList);
+    public ArrayList<Lagring> getDestillatHistorik() {
+        return new ArrayList<>(destillatHistorik);
     }
 
     public Destillering getDestillering() {
@@ -39,22 +39,22 @@ public class Destillat {
     }
 
     public void addLagring(Lagring lagring) {
-        if (!lagringList.contains(lagring)) {
-            lagringList.add(lagring);
+        if (!destillatHistorik.contains(lagring)) {
+            destillatHistorik.add(lagring);
             lagring.setDestillat(this);
         }
     }
 
     public void removeLagring(Lagring lagring) {
-        if (lagringList.contains(lagring)) {
-            lagringList.remove(lagring);
+        if (destillatHistorik.contains(lagring)) {
+            destillatHistorik.remove(lagring);
             lagring.setDestillat(null);
         }
     }
 
     @Override
     public String toString() {
-        return destillering.getNewMakeNr() +
-                ",  Mængde: " + mængde;
+        return destillering.getNewMakeNr() + " " +
+                mængde + " " + destillatId;
     }
 }

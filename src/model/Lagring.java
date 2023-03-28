@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Lagring {
@@ -59,8 +60,17 @@ public class Lagring {
         return slutDato;
     }
 
+    public LocalDate getStartDato() {
+        return startDato;
+    }
+
+    public long getLagringsperiode (){
+        long daysBetween = ChronoUnit.DAYS.between(startDato, slutDato);
+        return daysBetween;
+    }
+
     @Override
     public String toString() {
-        return "Fad: " + fad + ",    " + "destillat: " + destillat + ",     " + "Startdato: " + startDato;
+        return "Fad: " + fad + ",    " + "Lagringsperiode: " + startDato;
     }
 }

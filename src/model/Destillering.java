@@ -13,23 +13,27 @@ public class Destillering {
     private String rygematriale;
     private String kommentar;
 
+    private static int count = 1;
+
     private final ArrayList<Destillat> destillatList = new ArrayList<>();
 
-    public Destillering(int antalLiter, int maltBatch, String kornsort, int newMakeNr, double alkoholProcent, String rygematriale, String kommentar) {
+    public Destillering(int antalLiter, int maltBatch, String kornsort, double alkoholProcent, String rygemateriale, String kommentar) {
         this.antalLiter = antalLiter;
         this.maltBatch = maltBatch;
         this.kornsort = kornsort;
-        this.newMakeNr = newMakeNr;
+        this.newMakeNr = count;
+        count++;
         this.alkoholProcent = alkoholProcent;
-        this.rygematriale = rygematriale;
+        this.rygematriale = rygemateriale;
         this.kommentar = kommentar;
     }
 
     public ArrayList<Destillat> getDestillatList() {
         return new ArrayList<>(destillatList);
     }
-    public Destillat createDestillat(int mængde){
-        Destillat des = new Destillat(mængde,this);
+
+    public Destillat createDestillat(int mængde) {
+        Destillat des = new Destillat(mængde, this);
         destillatList.add(des);
         return des;
     }
@@ -42,19 +46,22 @@ public class Destillering {
         return newMakeNr;
     }
 
-    public void removeDestillat(Destillat destillat){
-        if (destillatList.contains(destillat)){
+    public void removeDestillat(Destillat destillat) {
+        if (destillatList.contains(destillat)) {
             destillatList.remove(destillat);
         }
     }
 
     //Opretter et destillat på størrelse med fadets størrelse og tilføjer det til destillatList.
-    public void hældPåFad(Fad fad){
+    public void hældPåFad(Fad fad) {
         Destillat destillat = createDestillat(fad.getStørrelse());
-        Lagring lagring = fad.createLagring(destillat,LocalDate.now());
+        Lagring lagring = fad.createLagring(destillat, LocalDate.now());
         destillat.addLagring(lagring);
         antalLiter -= fad.getStørrelse();
     }
 
-
+    @Override
+    public String toString() {
+        return newMakeNr + "    " + maltBatch + "   " + kornsort + "   " + rygematriale;
+    }
 }
