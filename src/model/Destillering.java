@@ -28,7 +28,7 @@ public class Destillering {
     public ArrayList<Destillat> getDestillatList() {
         return new ArrayList<>(destillatList);
     }
-    public Destillat createDestillat(int mængde, Destillering destillering){
+    public Destillat createDestillat(int mængde){
         Destillat des = new Destillat(mængde,this);
         destillatList.add(des);
         return des;
@@ -50,7 +50,7 @@ public class Destillering {
 
     //Opretter et destillat på størrelse med fadets størrelse og tilføjer det til destillatList.
     public void hældPåFad(Fad fad){
-        Destillat destillat = createDestillat(fad.getStørrelse(),this);
+        Destillat destillat = createDestillat(fad.getStørrelse());
         Lagring lagring = fad.createLagring(destillat,LocalDate.now());
         destillat.addLagring(lagring);
         antalLiter -= fad.getStørrelse();

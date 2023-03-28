@@ -27,14 +27,18 @@ public class App {
         Destillering destillering1 = new Destillering(100, 1, "Kornsort1", 1, 40, null, null);
         Destillering destillering2 = new Destillering(100, 2, "Kornsort2", 2, 40, null, null);
 
-        destillering1.hældPåFad(fad1);
-        System.out.println(destillering1.getAntalLiter());
-        destillering1.hældPåFad(fad2);
-        System.out.println(destillering1.getAntalLiter());
-        destillering2.hældPåFad(fad1);
-        System.out.println(destillering2.getAntalLiter());
-        System.out.println(fad1.getNuværendeLagring());
-        System.out.println(fad3.getNuværendeLagring());
+        Destillat destillat1 = destillering1.createDestillat(10);
+        Destillat destillat2 = destillering1.createDestillat(10);
+        System.out.println(destillat1.getDestillatId());
+        System.out.println(destillat2.getDestillatId());
+//        destillering1.hældPåFad(fad1);
+//        System.out.println(destillering1.getAntalLiter());
+//        destillering1.hældPåFad(fad2);
+//        System.out.println(destillering1.getAntalLiter());
+//        destillering2.hældPåFad(fad1);
+//        System.out.println(destillering2.getAntalLiter());
+//        System.out.println(fad1.getNuværendeLagring());
+//        System.out.println(fad3.getNuværendeLagring());
 
 
     }

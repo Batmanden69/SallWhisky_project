@@ -5,14 +5,22 @@ import java.util.ArrayList;
 public class Destillat {
     private ArrayList<Lagring> lagringList = new ArrayList<>();
     private Destillering destillering;
+    private int destillatId;
+    private static int count = 1;
     private int mængde;
     private Whisky whisky;
 
     Destillat(int mængde, Destillering destillering) {
         this.mængde = mængde;
         this.destillering = destillering;
+        this.destillatId = count;
+        count++;
+
     }
 
+    public int getDestillatId() {
+        return destillatId;
+    }
 
 
     public ArrayList<Lagring> getLagringList() {
