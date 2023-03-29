@@ -54,7 +54,7 @@ public class Destillat {
 
     @Override
     public String toString() {
-        return destillering.getNewMakeNr() + " " +
-                mængde + " " + destillatId;
+        return "DestillatID: " + destillatId + ",    New Make Nummer: " + destillering.getNewMakeNr() + ",    " +
+                mængde + " liter";
     }
 }

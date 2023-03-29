@@ -2,15 +2,20 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
-public class Fad {
+public class Fad implements Subject {
     private int id;
     private int størrelse;
     private int antalLiterPåfyldt;
+    private boolean tømt;
     private String fadType;
     private String leverandør;
     private Plads plads;
     private final ArrayList<Lagring> lagringList = new ArrayList<>();
+    private Set<Observer> observers;
 
 
     public Fad(int id, int størrelse, String fadType, String leverandør) {
@@ -18,6 +23,7 @@ public class Fad {
         this.størrelse = størrelse;
         this.fadType = fadType;
         this.leverandør = leverandør;
+        observers = new HashSet<Observer>();
     }
 
     public Lagring getNuværendeLagring() {
@@ -121,5 +127,30 @@ public class Fad {
         return " " + id;
     }
 
+    // Observer pattern -------------------------------------------------------------------------------------------
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
 
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        Iterator<Observer> itr = observers.iterator();
+        while (itr.hasNext()) {
+            Observer o = itr.next();
+            o.update(LocalDate.now());
+        }
+
+    }
+
+//----------------------------------------------------------------------------------------------
+    public void tømFad() {
+        tømt = true;
+        notifyObservers();
+    }
 }

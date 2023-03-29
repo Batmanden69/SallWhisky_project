@@ -27,6 +27,7 @@ public class Whisky {
     public void addFad(Fad fad) {
         if (!fadList.contains(fad)) {
             fadList.add(fad);
+            fad.tømFad();
         }
     }
 
