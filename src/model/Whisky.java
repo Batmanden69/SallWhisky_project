@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Whisky {
     private int batchId;
     private double mængde;
-    private ArrayList<Fad> fadList = new ArrayList<>();
+    private ArrayList<Destillat> destillatList = new ArrayList<>();
 
     public Whisky(int batchId, double mængde) {
         this.batchId = batchId;
@@ -20,20 +20,20 @@ public class Whisky {
         return mængde;
     }
 
-    public ArrayList<Fad> getFadList() {
-        return new ArrayList<>(fadList);
+    public ArrayList<Destillat> getDestillatList() {
+        return new ArrayList<>(destillatList);
     }
 
-    public void addFad(Fad fad) {
-        if (!fadList.contains(fad)) {
-            fadList.add(fad);
-            fad.tømFad();
+    public void addDestillat(Destillat destillat) {
+        if (!destillatList.contains(destillat)) {
+            destillatList.add(destillat);
+//            fad.tømFad();
         }
     }
 
-    public void removeFad(Fad fad) {
-        if (fadList.contains(fad)) {
-            fadList.remove(fad);
+    public void removeDestillat(Destillat destillat) {
+        if (destillatList.contains(destillat)) {
+            destillatList.remove(destillat);
         }
     }
 

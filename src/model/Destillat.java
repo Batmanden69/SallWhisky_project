@@ -9,12 +9,25 @@ public class Destillat {
     private static int count = 1;
     private int mængde;
 
-    Destillat(int mængde, Destillering destillering) {
+    public Destillat(int mængde, Destillering destillering) {
         this.mængde = mængde;
         this.destillering = destillering;
         this.destillatId = count;
         count++;
 
+    }
+
+    public void setDestillering(Destillering destillering) {
+        if (this.destillering != destillering) {
+            Destillering oldDestillering = this.destillering;
+            if (oldDestillering != null) {
+                oldDestillering.removeDestillat(this);
+            }
+            this.destillering = destillering;
+            if (destillering != null) {
+                destillering.addDestillat(this);
+            }
+        }
     }
 
     public int getDestillatId() {

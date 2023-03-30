@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-public class Lagring implements Observer {
+public class Lagring {
     private Fad fad;
     private Destillat destillat;
     private LocalDate startDato;
@@ -12,7 +12,6 @@ public class Lagring implements Observer {
 
     public Lagring(Fad fad, Destillat destillat) {
         this.fad = fad;
-        fad.registerObserver(this);
         this.destillat = destillat;
         this.startDato = LocalDate.now();
     }
@@ -82,13 +81,5 @@ public class Lagring implements Observer {
     @Override
     public String toString() {
         return "Fad: " + fad + ",    " + destillat + ",    " + "Lagringsperiode: " + getLagringsperiode() + " dage";
-    }
-
-
-    //Observer pattern --------------------------------------------------------------------
-    @Override
-    public void update(LocalDate dato) {
-        this.setSlutDato(dato);
-
     }
 }

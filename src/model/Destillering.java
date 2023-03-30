@@ -49,6 +49,14 @@ public class Destillering {
     public void removeDestillat(Destillat destillat) {
         if (destillatList.contains(destillat)) {
             destillatList.remove(destillat);
+            destillat.setDestillering(this);
+        }
+    }
+
+    public void addDestillat(Destillat destillat) {
+        if (!destillatList.contains(destillat)) {
+            destillatList.add(destillat);
+            destillat.setDestillering(this);
         }
     }
 
