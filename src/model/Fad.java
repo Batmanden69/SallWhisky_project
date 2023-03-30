@@ -14,7 +14,7 @@ public class Fad implements Subject {
     private String fadType;
     private String leverandør;
     private Plads plads;
-    private final ArrayList<Lagring> lagringList = new ArrayList<>();
+    private ArrayList<Lagring> lagringList = new ArrayList<>();
     private Set<Observer> observers;
 
 
@@ -26,11 +26,15 @@ public class Fad implements Subject {
         observers = new HashSet<Observer>();
     }
 
-    public Lagring getNuværendeLagring() {
-        if (mængdeTilbage() == størrelse)
+    public ArrayList<Lagring> getNuværendeIndhold() {
+        ArrayList<Lagring> results = new ArrayList<>();
+        if (antalLiterLedig() == størrelse)
             return null;
         else {
-            return lagringList.get(lagringList.size() - 1);
+            for (Lagring lagring : lagringList) {
+                results.add(lagring);
+            }
+            return results;
         }
     }
 
@@ -102,8 +106,8 @@ public class Fad implements Subject {
         }
     }
 
-    public Lagring createLagring(Destillat destillat, LocalDate startDato) {
-        Lagring lagring = new Lagring(this, destillat, startDato);
+    public Lagring createLagring(Fad fad, Destillat destillat) {
+        Lagring lagring = new Lagring(fad, destillat);
         lagringList.add(lagring);
         setAntalLiterPåfyldt(destillat.getMængde());
         return lagring;
@@ -118,7 +122,7 @@ public class Fad implements Subject {
     }
 
 
-    public int mængdeTilbage() {
+    public int antalLiterLedig() {
         return størrelse - antalLiterPåfyldt;
     }
 
@@ -148,9 +152,38 @@ public class Fad implements Subject {
 
     }
 
-//----------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
     public void tømFad() {
-        tømt = true;
         notifyObservers();
+        while (lagringList.size() > 0) {
+            Lagring lagring = lagringList.get(0);
+            removeLagring(lagring);
+        }
+//        for (Lagring lagring : lagringList) {
+//            this.removeLagring(lagring);
+//        }
+//        tømt = true;
+//        this.antalLiterPåfyldt = 0;
+
+    }
+
+    public void omhældFad(Fad nytFad) {
+        ArrayList<Lagring> nyLagringList = new ArrayList<>();
+        for (Lagring lagring : lagringList) {
+            Lagring nyLagring = nytFad.createLagring(nytFad, lagring.getDestillat());
+            nyLagringList.add(nyLagring);
+        }
+        this.tømFad();
+//
+//
+//        System.out.println(nyLagring.getDestillat());
+//        nytFad.addLagring(nyLagring);
+//        System.out.println(nytFad.getLagringList());
+//        int mængde = getNuværendeIndhold().getMængde();
+//        System.out.println(nytFad.getNuværendeIndhold());
+//        tømFad();
+////        nyLagring.setDestillat(this.getNuværendeIndhold());
+//
+//        nytFad.setAntalLiterPåfyldt(nytFad.getAntalLiterPåfyldt()+mængde);
     }
 }

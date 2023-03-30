@@ -10,11 +10,11 @@ public class Lagring implements Observer {
     private LocalDate startDato;
     private LocalDate slutDato;
 
-    public Lagring(Fad fad, Destillat destillat, LocalDate startDato) {
+    public Lagring(Fad fad, Destillat destillat) {
         this.fad = fad;
         fad.registerObserver(this);
         this.destillat = destillat;
-        this.startDato = startDato;
+        this.startDato = LocalDate.now();
     }
 
     public void setSlutDato(LocalDate slutDato) {
@@ -70,7 +70,12 @@ public class Lagring implements Observer {
     }
 
     public long getLagringsperiode() {
-        long daysBetween = ChronoUnit.DAYS.between(startDato, slutDato);
+        long daysBetween;
+        if (slutDato == null) {
+            daysBetween = ChronoUnit.DAYS.between(startDato, LocalDate.now());
+        } else {
+            daysBetween = ChronoUnit.DAYS.between(startDato, slutDato);
+        }
         return daysBetween;
     }
 
