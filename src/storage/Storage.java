@@ -1,16 +1,37 @@
 package storage;
 
+import model.Fad;
+import model.Whisky;
+
+import java.util.ArrayList;
+
 public class Storage {
-    private static Storage instance;
+    private static ArrayList<Whisky> WhiskyList = new ArrayList<>();
 
-    private Storage() {
+    private static ArrayList<Fad> fadList = new ArrayList<>();
 
+
+    //----------------------------------------------#
+    //Get-metoder
+
+
+    public static ArrayList<Whisky> getWhiskyList() {
+        return WhiskyList;
     }
 
-    public static Storage getInstance() {
-        if (instance == null) {
-            instance = new Storage();
-        }
-        return instance;
+    public static ArrayList<Fad> getFadList() {
+        return fadList;
     }
+
+    //----------------------------------------------#
+    //Add-metoder
+
+    public static void addWhisky(Whisky whisky) {
+        WhiskyList.add(whisky);
+    }
+
+    public static void addFad(Fad fad) {
+        fadList.add(fad);
+    }
+
 }
