@@ -21,6 +21,7 @@ public class Controller {
     }
 
 
+
     public void initStorage() {
         Lager lager1 = new Lager("Lager1", 10);
 
