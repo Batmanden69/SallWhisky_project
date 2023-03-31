@@ -65,6 +65,7 @@ public class Destillat {
         }
     }
 
+
     @Override
     public String toString() {
         return "DestillatID: " + destillatId + ",    New Make Nummer: " + destillering.getNewMakeNr() + ",    " +
