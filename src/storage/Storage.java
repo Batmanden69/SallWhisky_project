@@ -1,5 +1,7 @@
 package storage;
 
+import application.Destillat;
+import application.Destillering;
 import application.Fad;
 import application.Whisky;
 
@@ -22,6 +24,8 @@ public class Storage {
     private ArrayList<Whisky> WhiskyList = new ArrayList<>();
 
     private ArrayList<Fad> fadList = new ArrayList<>();
+    private ArrayList<Destillat> destillatList = new ArrayList<>();
+    private ArrayList<Destillering> destilleringList = new ArrayList<>();
 
 
     //----------------------------------------------#
@@ -36,6 +40,14 @@ public class Storage {
         return fadList;
     }
 
+    public ArrayList<Destillat> getDestillatList() {
+        return destillatList;
+    }
+
+    public ArrayList<Destillering> getDestilleringList() {
+        return destilleringList;
+    }
+
     //----------------------------------------------#
     //Add-metoder
 
@@ -45,6 +57,14 @@ public class Storage {
 
     public void addFad(Fad fad) {
         fadList.add(fad);
+    }
+
+    public void addDestillat(Destillat destillat) {
+        destillatList.add(destillat);
+    }
+
+    public void addDestillering(Destillering destillering) {
+        destilleringList.add(destillering);
     }
 
 }
