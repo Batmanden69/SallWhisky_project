@@ -42,11 +42,19 @@ public class App {
         System.out.println(fad1.getNuværendeIndhold());
         Whisky whisky1 = new Whisky(1, 100);
         System.out.println(fad2.getNuværendeIndhold());
-        fad1.omhældFad(fad2);
+        //fad2.omhældFad(fad3);
         System.out.println(fad1.getNuværendeIndhold());
         System.out.println(fad2.getNuværendeIndhold());
-        whisky1.addFad(fad2);
+        //whisky1.addFad(fad2);
         System.out.println(whisky1.lagringHistorik());
+
+        System.out.println(fad2.getNuværendeIndhold());
+        System.out.println(fad4.getNuværendeIndhold());
+        fad2.omhældFad(fad4);
+
+        System.out.println(fad2.getNuværendeIndhold());
+        System.out.println(fad4.getNuværendeIndhold());
+
 
 
 
