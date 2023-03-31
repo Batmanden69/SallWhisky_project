@@ -53,7 +53,11 @@ public class App {
 
         System.out.println("Fad2 efter omhældning : " + fad2.getNuværendeIndhold());
 
-        System.out.println("Destillathistorik for destillatID 1 : " + destillering1.getDestillatList().get(0).getDestillatHistorik());
+        Whisky whisky1 = new Whisky(2, 300);
+
+        fad2.tømFad();
+
+        System.out.println(whisky1.destilleringHistorik());
 
 
 //        System.out.println(fad1.getAntalLiterPåfyldt());

@@ -1,6 +1,5 @@
 package model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Destillering {
@@ -10,9 +9,9 @@ public class Destillering {
     private String kornsort;
     private int newMakeNr;
     private double alkoholProcent;
-    private String rygematriale;
+    private String rygemateriale;
     private String kommentar;
-
+    private String medarbejder;
     private static int count = 1;
 
     private final ArrayList<Destillat> destillatList = new ArrayList<>();
@@ -24,7 +23,7 @@ public class Destillering {
         this.newMakeNr = count;
         count++;
         this.alkoholProcent = alkoholProcent;
-        this.rygematriale = rygemateriale;
+        this.rygemateriale = rygemateriale;
         this.kommentar = kommentar;
     }
 
@@ -70,6 +69,6 @@ public class Destillering {
 
     @Override
     public String toString() {
-        return newMakeNr + "    " + maltBatch + "   " + kornsort + "   " + rygematriale;
+        return newMakeNr + "    " + maltBatch + "   " + kornsort + "   " + rygemateriale;
     }
 }
