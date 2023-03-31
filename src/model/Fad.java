@@ -145,7 +145,17 @@ public class Fad {
             Lagring nyLagring = nytFad.createLagring(nytFad, lagring.getDestillat());
             nyLagringList.add(nyLagring);
         }
-        this.tømFad();
-
+      //  this.tømFad();
     }
+//    public void omhældFadRekursivt(Fad nytFad) {
+//        if (lagringList.isEmpty()) {
+//            return;
+//        }
+//        Lagring lagring = lagringList.get(0);
+//        Lagring nyLagring = nytFad.createLagring(nytFad, lagring.getDestillat());
+//        ArrayList<Lagring> resten = new ArrayList<>(lagringList.subList(1, lagringList.size()));
+//        Fad restFad = new Fad(resten); // Opret et nyt fad med resten af listen
+//        restFad.omhældFadRekursivt(nytFad); // Kald omhældFadRekursivt() rekursivt på resten af listen
+//        nytFad.getLagringList().add(nyLagring); // Tilføj den nye lagring til det nye fad
+//    }
 }

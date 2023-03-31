@@ -37,21 +37,9 @@ public class Whisky {
         }
     }
 
-
-    public ArrayList<Destillat> destillatHistorik() {
-        ArrayList<Destillat> destillatHistorik = new ArrayList<>();
-        for (Fad f : getFadList()) {
-            for (Lagring l : f.getLagringList()) {
-                destillatHistorik.add(l.getDestillat());
-            }
-        }
-        return destillatHistorik;
-    }
-
-    // Evt. anvende anden collection som ikke kan have dubletter
     public ArrayList<Destillering> destilleringHistorik() {
         ArrayList<Destillering> destilleringHistorik = new ArrayList<>();
-        for (Destillat d : destillatHistorik()) {
+        for (Destillat d : getDestillatList()) {
             destilleringHistorik.add(d.getDestillering());
         }
         return destilleringHistorik;
@@ -59,7 +47,7 @@ public class Whisky {
 
     public ArrayList<Lagring> lagringHistorik() {
         ArrayList<Lagring> lagringHistorik = new ArrayList<>();
-        for (Destillat d : destillatHistorik()) {
+        for (Destillat d : getDestillatList()) {
             lagringHistorik.addAll(d.getDestillatHistorik());
         }
         return lagringHistorik;
