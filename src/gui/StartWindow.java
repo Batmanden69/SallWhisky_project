@@ -13,11 +13,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class StartWindow extends Application {
+    private Controller controller;
 
 
     @Override
     public void init() {
-        Controller.initStorage();
+        controller = Controller.getInstance();
+        controller.getInstance().init();
     }
 
     @Override
@@ -67,6 +69,13 @@ public class StartWindow extends Application {
         WhiskyPane whiskyPane = new WhiskyPane();
         tabWhisky.setContent(whiskyPane);
         tabWhisky.setOnSelectionChanged(event -> whiskyPane.updateControls());
+
+        Tab tabOversigt = new Tab("Oversigt");
+        tabPane.getTabs().add(tabOversigt);
+
+        OversigtPane oversigtPane = new OversigtPane();
+        tabOversigt.setContent(oversigtPane);
+        tabOversigt.setOnSelectionChanged(event -> oversigtPane.updateControls());
 
     }
 }
