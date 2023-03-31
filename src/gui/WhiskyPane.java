@@ -1,5 +1,6 @@
 package gui;
 
+import application.Controller;
 import application.Destillat;
 import application.Whisky;
 import javafx.collections.FXCollections;
@@ -40,6 +41,14 @@ public class WhiskyPane extends GridPane {
 
         sletWhiskyButton = new Button("Slet whisky");
         add(sletWhiskyButton, 1, 3);
+    }
+
+    //-------------------------------------#
+    //Metoder
+
+
+    public void updateFadList() {
+        whiskyListView.getItems().setAll(Controller.getInstance().getWhiskyList());
     }
 
     public void updateControls() {

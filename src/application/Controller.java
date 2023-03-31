@@ -1,5 +1,10 @@
 package application;
 
+import storage.Storage;
+
+import javax.naming.ldap.Control;
+import java.util.ArrayList;
+
 public class Controller {
 
     private static Controller instance;
@@ -15,11 +20,15 @@ public class Controller {
     }
 
 
-
+    public ArrayList<Whisky> getWhiskyList() {
+        return Storage.getInstance().getWhiskyList();
+    }
 
 
     public static void initStorage() {
-        
+
+        Whisky whisky1 = new Whisky(1, 500);
+
     }
 
 
