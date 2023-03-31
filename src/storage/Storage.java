@@ -11,6 +11,8 @@ public class Storage {
     private static ArrayList<Fad> fadList = new ArrayList<>();
 
 
+
+
     //----------------------------------------------#
     //Get-metoder
 
