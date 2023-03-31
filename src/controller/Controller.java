@@ -50,16 +50,11 @@ public class Controller {
         destillering2.hældPåFad(fad2);
 
 
-        Whisky whisky1 = new Whisky(1, 100);
-
-        whisky1.addFad(fad1);
-        whisky1.addFad(fad2);
-
-        System.out.println(whisky1.destillatHistorik());
-
-        System.out.println(whisky1.destilleringHistorik());
-
-        System.out.println(whisky1.lagringHistorik());
+//        Whisky whisky1 = new Whisky(1, 100);
+//
+//        System.out.println(whisky1.destilleringHistorik());
+//
+//        System.out.println(whisky1.lagringHistorik());
 
 //        Lagring lagring1 = new Lagring(fad1, destillering1.createDestillat(10), LocalDate.now());
 //        lagring1.setSlutDato(LocalDate.now().plus(7, ChronoUnit.DAYS));

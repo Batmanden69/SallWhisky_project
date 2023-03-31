@@ -29,28 +29,31 @@ public class App {
 
         Destillering destillering1 = new Destillering(100, 1, "Kornsort1", 40, null, null);
         Destillering destillering2 = new Destillering(100, 2, "Kornsort2", 40, null, null);
+        Destillering destillering3 = new Destillering(100, 3, "Kornsort3", 40, null, null);
 
         destillering1.hældPåFad(fad1);
-        destillering2.hældPåFad(fad2);
+        destillering2.hældPåFad(fad1);
+        destillering3.hældPåFad(fad1);
 
-
+        destillering1.hældPåFad(fad3);
 
 
         fad1.getLagringList().get(0).setStartDato(LocalDate.of(2023, 1, 1));
-//        fad1.getLagringList().get(1).setStartDato(LocalDate.of(2022, 1, 1));
+        fad1.getLagringList().get(1).setStartDato(LocalDate.of(2022, 1, 1));
+        fad1.getLagringList().get(2).setStartDato(LocalDate.of(2022, 4, 1));
 
-        System.out.println(fad1.getNuværendeIndhold());
-        Whisky whisky1 = new Whisky(1, 100);
-        System.out.println(fad2.getNuværendeIndhold());
+        fad3.getLagringList().get(0).setStartDato(LocalDate.of(2023, 1, 1));
+
+
+        System.out.println("Fad1 før omhældning : " + fad1.getNuværendeIndhold());
+
         fad1.omhældFad(fad2);
-        System.out.println(fad1.getNuværendeIndhold());
-        System.out.println(fad2.getNuværendeIndhold());
-        whisky1.addFad(fad2);
-        System.out.println(whisky1.lagringHistorik());
 
+        System.out.println("Fad1 efter omhældning : " + fad1.getNuværendeIndhold());
 
+        System.out.println("Fad2 efter omhældning : " + fad2.getNuværendeIndhold());
 
-
+        System.out.println("Destillathistorik for destillatID 1 : " + destillering1.getDestillatList().get(0).getDestillatHistorik());
 
 
 //        System.out.println(fad1.getAntalLiterPåfyldt());
