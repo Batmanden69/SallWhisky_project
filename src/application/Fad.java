@@ -141,5 +141,4 @@ public class Fad {
             omhældFad(nytFad);
         }
     }
-
 }
