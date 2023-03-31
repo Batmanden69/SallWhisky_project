@@ -6,33 +6,44 @@ import model.Whisky;
 import java.util.ArrayList;
 
 public class Storage {
-    private static ArrayList<Whisky> WhiskyList = new ArrayList<>();
 
-    private static ArrayList<Fad> fadList = new ArrayList<>();
+    private static Storage instans;
 
+    public Storage() {
+    }
 
+    public static Storage getInstance() {
+        if (instans == null) {
+            instans = new Storage();
+        }
+        return instans;
+    }
+
+    private ArrayList<Whisky> WhiskyList = new ArrayList<>();
+
+    private ArrayList<Fad> fadList = new ArrayList<>();
 
 
     //----------------------------------------------#
     //Get-metoder
 
 
-    public static ArrayList<Whisky> getWhiskyList() {
+    public ArrayList<Whisky> getWhiskyList() {
         return WhiskyList;
     }
 
-    public static ArrayList<Fad> getFadList() {
+    public ArrayList<Fad> getFadList() {
         return fadList;
     }
 
     //----------------------------------------------#
     //Add-metoder
 
-    public static void addWhisky(Whisky whisky) {
+    public void addWhisky(Whisky whisky) {
         WhiskyList.add(whisky);
     }
 
-    public static void addFad(Fad fad) {
+    public void addFad(Fad fad) {
         fadList.add(fad);
     }
 
