@@ -49,13 +49,21 @@ public class Destillering {
     public void removeDestillat(Destillat destillat) {
         if (destillatList.contains(destillat)) {
             destillatList.remove(destillat);
+            destillat.setDestillering(this);
+        }
+    }
+
+    public void addDestillat(Destillat destillat) {
+        if (!destillatList.contains(destillat)) {
+            destillatList.add(destillat);
+            destillat.setDestillering(this);
         }
     }
 
     //Opretter et destillat på størrelse med fadets størrelse og tilføjer det til destillatList.
     public void hældPåFad(Fad fad) {
         Destillat destillat = createDestillat(fad.getStørrelse());
-        Lagring lagring = fad.createLagring(destillat, LocalDate.now());
+        Lagring lagring = fad.createLagring(fad, destillat);
         destillat.addLagring(lagring);
         antalLiter -= fad.getStørrelse();
     }

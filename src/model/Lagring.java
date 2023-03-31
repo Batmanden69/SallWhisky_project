@@ -10,10 +10,10 @@ public class Lagring {
     private LocalDate startDato;
     private LocalDate slutDato;
 
-    public Lagring(Fad fad, Destillat destillat, LocalDate startDato) {
+    public Lagring(Fad fad, Destillat destillat) {
         this.fad = fad;
         this.destillat = destillat;
-        this.startDato = startDato;
+        this.startDato = LocalDate.now();
     }
 
     public void setSlutDato(LocalDate slutDato) {
@@ -64,13 +64,22 @@ public class Lagring {
         return startDato;
     }
 
-    public long getLagringsperiode (){
-        long daysBetween = ChronoUnit.DAYS.between(startDato, slutDato);
+    public void setStartDato(LocalDate startDato) {
+        this.startDato = startDato;
+    }
+
+    public long getLagringsperiode() {
+        long daysBetween;
+        if (slutDato == null) {
+            daysBetween = ChronoUnit.DAYS.between(startDato, LocalDate.now());
+        } else {
+            daysBetween = ChronoUnit.DAYS.between(startDato, slutDato);
+        }
         return daysBetween;
     }
 
     @Override
     public String toString() {
-        return "Fad: " + fad + ",    " + "Lagringsperiode: " + startDato;
+        return "Fad: " + fad + ",    " + destillat + ",    " + "Lagringsperiode: " + getLagringsperiode() + " dage";
     }
 }

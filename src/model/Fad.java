@@ -2,15 +2,20 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Fad {
     private int id;
     private int størrelse;
     private int antalLiterPåfyldt;
+    private boolean tømt;
     private String fadType;
     private String leverandør;
     private Plads plads;
-    private final ArrayList<Lagring> lagringList = new ArrayList<>();
+    private ArrayList<Lagring> lagringList = new ArrayList<>();
+
 
 
     public Fad(int id, int størrelse, String fadType, String leverandør) {
@@ -20,11 +25,15 @@ public class Fad {
         this.leverandør = leverandør;
     }
 
-    public Lagring getNuværendeLagring() {
-        if (mængdeTilbage() == størrelse)
+    public ArrayList<Lagring> getNuværendeIndhold() {
+        ArrayList<Lagring> results = new ArrayList<>();
+        if (antalLiterLedig() == størrelse)
             return null;
         else {
-            return lagringList.get(lagringList.size() - 1);
+            for (Lagring lagring : lagringList) {
+                results.add(lagring);
+            }
+            return results;
         }
     }
 
@@ -96,8 +105,8 @@ public class Fad {
         }
     }
 
-    public Lagring createLagring(Destillat destillat, LocalDate startDato) {
-        Lagring lagring = new Lagring(this, destillat, startDato);
+    public Lagring createLagring(Fad fad, Destillat destillat) {
+        Lagring lagring = new Lagring(fad, destillat);
         lagringList.add(lagring);
         setAntalLiterPåfyldt(destillat.getMængde());
         return lagring;
@@ -112,7 +121,7 @@ public class Fad {
     }
 
 
-    public int mængdeTilbage() {
+    public int antalLiterLedig() {
         return størrelse - antalLiterPåfyldt;
     }
 
@@ -122,4 +131,31 @@ public class Fad {
     }
 
 
+
+    public void tømFad() {
+        while (lagringList.size() > 0) {
+            Lagring lagring = lagringList.get(0);
+            removeLagring(lagring);
+        }
+    }
+
+    public void omhældFad(Fad nytFad) {
+        ArrayList<Lagring> nyLagringList = new ArrayList<>();
+        for (Lagring lagring : lagringList) {
+            Lagring nyLagring = nytFad.createLagring(nytFad, lagring.getDestillat());
+            nyLagringList.add(nyLagring);
+        }
+      //  this.tømFad();
+    }
+//    public void omhældFadRekursivt(Fad nytFad) {
+//        if (lagringList.isEmpty()) {
+//            return;
+//        }
+//        Lagring lagring = lagringList.get(0);
+//        Lagring nyLagring = nytFad.createLagring(nytFad, lagring.getDestillat());
+//        ArrayList<Lagring> resten = new ArrayList<>(lagringList.subList(1, lagringList.size()));
+//        Fad restFad = new Fad(resten); // Opret et nyt fad med resten af listen
+//        restFad.omhældFadRekursivt(nytFad); // Kald omhældFadRekursivt() rekursivt på resten af listen
+//        nytFad.getLagringList().add(nyLagring); // Tilføj den nye lagring til det nye fad
+//    }
 }
