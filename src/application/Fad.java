@@ -124,15 +124,12 @@ public class Fad {
     public String toString() {
         return " " + id;
     }
-
-
     public void tømFad() {
         while (lagringList.size() > 0) {
             Lagring lagring = lagringList.get(0);
             removeLagring(lagring);
         }
     }
-
     public void omhældFad(Fad nytFad) {
         if (lagringList.size() > 0) {
             Lagring lagring = lagringList.remove(0);
@@ -141,5 +138,4 @@ public class Fad {
             omhældFad(nytFad);
         }
     }
-
 }
