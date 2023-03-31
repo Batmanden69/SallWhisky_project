@@ -1,8 +1,7 @@
-package model;
+package application;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 
 public class Lagring {
     private Fad fad;

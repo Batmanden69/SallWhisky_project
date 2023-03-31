@@ -1,6 +1,5 @@
-package model;
+package application;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Destillering {

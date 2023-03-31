@@ -1,6 +1,4 @@
-package controller;
-
-import storage.Storage;
+package application;
 
 public class Controller {
 
@@ -17,7 +15,7 @@ public class Controller {
     }
 
 
-    public void initStorage() {
+    public static void initStorage() {
         
     }
 
