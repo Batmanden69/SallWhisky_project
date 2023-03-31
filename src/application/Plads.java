@@ -1,6 +1,4 @@
-package model;
-
-import java.util.ArrayList;
+package application;
 
 public class Plads {
 

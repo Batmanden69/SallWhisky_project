@@ -1,7 +1,7 @@
 package storage;
 
-import model.Fad;
-import model.Whisky;
+import application.Fad;
+import application.Whisky;
 
 import java.util.ArrayList;
 

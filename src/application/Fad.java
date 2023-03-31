@@ -1,10 +1,6 @@
-package model;
+package application;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
 public class Fad {
     private int id;
@@ -138,20 +134,12 @@ public class Fad {
     }
 
     public void omhældFad(Fad nytFad) {
-        ArrayList<Lagring> nyLagringList = new ArrayList<>();
-        omhældLagring(lagringList, nytFad, nyLagringList);
+        if (lagringList.size() > 0) {
+            Lagring lagring = lagringList.remove(0);
+            Lagring nyLagring = nytFad.createLagring(nytFad, lagring.getDestillat());
+            nytFad.lagringList.add(nyLagring);
+            omhældFad(nytFad);
+        }
     }
 
-    //Hjælpemetode rekursion
-    private void omhældLagring(ArrayList<Lagring> lagringList, Fad nytFad, ArrayList<Lagring> nyLagringList) {
-        if (lagringList.isEmpty()) {
-            return;
-        }
-        Lagring lagring = lagringList.get(0);
-        lagringList.remove(0);
-        Lagring nyLagring = nytFad.createLagring(nytFad, lagring.getDestillat());
-        nyLagringList.add(nyLagring);
-        omhældLagring(lagringList, nytFad, nyLagringList);
-        lagring.setFad(null);
-    }
 }

@@ -1,28 +1,12 @@
-package controller;
-
-import model.Destillering;
-import model.Fad;
-import model.Lager;
-import model.Whisky;
-import storage.Storage;
-
-public class Controller {
-
-    private static Controller instance;
-
-    public Controller() {
-    }
-
-    public static Controller getInstance() {
-        if (instance == null) {
-            instance = new Controller();
-        }
-        return instance;
-    }
+package application;
 
 
+import application.*;
 
-    public void initStorage() {
+import java.time.LocalDate;
+
+public class App {
+    public static void main(String[] args) {
         Lager lager1 = new Lager("Lager1", 10);
 
 
@@ -32,10 +16,10 @@ public class Controller {
         lager1.createPlads(1, 4, lager1);
 
 
-        Fad fad1 = new Fad(1, 10, "Fad1", "Leverandør1");
+        Fad fad1 = new Fad(1, 100, "Fad1", "Leverandør1");
         Fad fad2 = new Fad(2, 10, "Fad2", "Leverandør2");
         Fad fad3 = new Fad(3, 10, "Fad3", "Leverandør3");
-        Fad fad4 = new Fad(4, 10, "Fad4", "Leverandør4");
+        Fad fad4 = new Fad(4, 70, "Fad4", "Leverandør4");
 
         fad1.lægPåPlads(lager1);
         fad2.lægPåPlads(lager1);
@@ -46,11 +30,40 @@ public class Controller {
         Destillering destillering2 = new Destillering(100, 2, "Kornsort2", 40, null, null);
 
         destillering1.hældPåFad(fad1);
-        destillering1.hældPåFad(fad2);
         destillering2.hældPåFad(fad2);
 
 
+
+
+
+        fad1.getLagringList().get(0).setStartDato(LocalDate.of(2023, 1, 1));
+//        fad1.getLagringList().get(1).setStartDato(LocalDate.of(2022, 1, 1));
+
+        System.out.println(fad1.getNuværendeIndhold());
+        Whisky whisky1 = new Whisky(1, 100);
+        System.out.println(fad2.getNuværendeIndhold());
+        fad1.omhældFad(fad2);
+        System.out.println(fad1.getNuværendeIndhold());
+        System.out.println(fad2.getNuværendeIndhold());
+
+        System.out.println(whisky1);
+
+
+
+
+
+
+//        System.out.println(fad1.getAntalLiterPåfyldt());
+//        System.out.println(fad4.getAntalLiterPåfyldt());
+//        System.out.println(fad4.getNuværendeIndhold().getDestillatHistorik());
+
+
 //        Whisky whisky1 = new Whisky(1, 100);
+//
+//        whisky1.addFad(fad1);
+//        whisky1.addFad(fad2);
+//
+//        System.out.println(whisky1.destillatHistorik());
 //
 //        System.out.println(whisky1.destilleringHistorik());
 //

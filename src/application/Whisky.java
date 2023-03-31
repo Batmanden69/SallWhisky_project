@@ -1,4 +1,4 @@
-package model;
+package application;
 
 import java.util.ArrayList;
 
@@ -53,5 +53,12 @@ public class Whisky {
         return lagringHistorik;
     }
 
-
+    @Override
+    public String toString() {
+        return "Whisky{" +
+                "batchId=" + batchId +
+                ", mængde=" + mængde +
+                ", destillatList=" + destillatList +
+                '}';
+    }
 }
