@@ -1,9 +1,6 @@
 package storage;
 
-import application.Destillat;
-import application.Destillering;
-import application.Fad;
-import application.Whisky;
+import application.*;
 
 import java.util.ArrayList;
 
@@ -26,6 +23,8 @@ public class Storage {
     private ArrayList<Fad> fadList = new ArrayList<>();
     private ArrayList<Destillat> destillatList = new ArrayList<>();
     private ArrayList<Destillering> destilleringList = new ArrayList<>();
+    private ArrayList<Lager> lagerList = new ArrayList<>();
+    private ArrayList<Plads> pladsList = new ArrayList<>();
 
 
     //----------------------------------------------#
@@ -48,6 +47,14 @@ public class Storage {
         return destilleringList;
     }
 
+    public ArrayList<Lager> getLagerList() {
+        return lagerList;
+    }
+
+    public ArrayList<Plads> getPladsList() {
+        return pladsList;
+    }
+
     //----------------------------------------------#
     //Add-metoder
 
@@ -67,4 +74,11 @@ public class Storage {
         destilleringList.add(destillering);
     }
 
+    public void addLager(Lager lager) {
+        lagerList.add(lager);
+    }
+
+    public void addPlads(Plads plads) {
+        pladsList.add(plads);
+    }
 }
