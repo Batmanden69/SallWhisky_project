@@ -71,4 +71,24 @@ public class Destillering {
     public String toString() {
         return newMakeNr + "    " + maltBatch + "   " + kornsort + "   " + rygemateriale;
     }
+
+    public int getMaltBatch() {
+        return maltBatch;
+    }
+
+    public String getKornsort() {
+        return kornsort;
+    }
+
+    public String getRygemateriale(){
+        return rygemateriale;
+    }
+
+    public double getAlkoholProcent() {
+        return alkoholProcent;
+    }
+
+    public String getKommentar() {
+        return kommentar;
+    }
 }
