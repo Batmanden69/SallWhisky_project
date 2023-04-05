@@ -1,5 +1,6 @@
 package application;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Whisky {
@@ -27,7 +28,7 @@ public class Whisky {
     public void addDestillat(Destillat destillat) {
         if (!destillatList.contains(destillat)) {
             destillatList.add(destillat);
-//            fad.tømFad();
+            destillat.getDestillatHistorik().get(destillat.getDestillatHistorik().size()-1).setSlutDato(LocalDate.now());
         }
     }
 
