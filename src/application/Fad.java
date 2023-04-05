@@ -32,7 +32,7 @@ public class Fad {
         }
     }
 
-    public ArrayList<Destillat> getDestillater(){
+    public ArrayList<Destillat> getDestillater() {
         ArrayList<Destillat> results = new ArrayList<>();
         if (antalLiterLedig() == størrelse)
             return null;
@@ -135,12 +135,14 @@ public class Fad {
 
     @Override
     public String toString() {
-        return "FadID: " + id;
+        return "FadID: " + id + "   " + "Str: " + størrelse + " L";
     }
+
     public void tømFad() {
-        tømt= true;
-        antalLiterPåfyldt=0;
-        }
+        tømt = true;
+        antalLiterPåfyldt = 0;
+    }
+
     public void omhældFad(Fad nytFad) {
         if (lagringList.size() > 0) {
             Lagring lagring = lagringList.remove(0);
@@ -151,7 +153,7 @@ public class Fad {
     }
 
     public void omhældFad2(Fad nytFad) {
-        if (lagringList.size() == 0){
+        if (lagringList.size() == 0) {
             tømFad();
         }
         while (lagringList.size() > 0) {
@@ -160,11 +162,11 @@ public class Fad {
 //            nytFad.lagringList.add(nyLagring);
             this.removeLagring(lagring);
             omhældFad2(nytFad);
-            }
-        }
-
-
-        public int getFadId () {
-            return id;
         }
     }
+
+
+    public int getFadId() {
+        return id;
+    }
+}

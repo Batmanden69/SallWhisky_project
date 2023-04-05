@@ -58,6 +58,10 @@ public class OversigtPane extends GridPane {
         this.updateControls();
     }
 
+    public ListView getLvwFade() {
+        return lvwFade;
+    }
+
     private void selectedFadChanged() {
         this.updateControls();
     }

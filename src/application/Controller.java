@@ -71,9 +71,6 @@ public class Controller {
     }
 
 
-
-
-
     public void initStorage() {
         this.createLager("Lager1", 10);
 
@@ -114,6 +111,7 @@ public class Controller {
 
         fad1.omhældFad2(fad3);
         fad2.omhældFad2(fad3);
+//        fad3.omhældFad2(fad4);
 
 
 

@@ -1,8 +1,6 @@
 package gui;
 
 import application.Controller;
-import application.Fad;
-import application.Whisky;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -10,7 +8,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 public class StartWindow extends Application {
     private Controller controller;
@@ -52,7 +49,7 @@ public class StartWindow extends Application {
         Tab tabDestillat = new Tab("Destillat");
         tabPane.getTabs().add(tabDestillat);
 
-        DestillatPane destillatPane = new DestillatPane();
+        LagerPane destillatPane = new LagerPane();
         tabDestillat.setContent(destillatPane);
         tabDestillat.setOnSelectionChanged(event -> destillatPane.updateControls());
 
