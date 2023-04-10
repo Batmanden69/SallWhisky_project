@@ -26,5 +26,6 @@
     </orderEntry>
     <orderEntry type="library" name="javafx.18" level="application" />
     <orderEntry type="library" name="javafx18.0.2" level="application" />
+    <orderEntry type="library" name="javafx" level="application" />
   </component>
 </module>
