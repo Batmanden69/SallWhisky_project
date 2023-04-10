@@ -15,6 +15,8 @@ public class FadPane extends GridPane {
     private ComboBox lagerCombo;
     private Button opretButton;
 
+    private LagerPane lagerPane = new LagerPane();
+
     private OversigtPane oversigtPane = new OversigtPane();
 
     public FadPane() {
@@ -74,7 +76,6 @@ public class FadPane extends GridPane {
         Fad fad = Controller.getInstance().createFad(id, størrelse, fadType, leverandør);
 
         fad.lægPåPlads(lager);
-        oversigtPane.getLvwFade().getItems().add(fad);
 
         idField.setText("");
         størrelseField.setText("");

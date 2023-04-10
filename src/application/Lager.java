@@ -65,6 +65,6 @@ public class Lager {
 
     @Override
     public String toString() {
-        return "lager "+navn+ " pladserTotal "+pladserTotal+ " pladser "+pladsListe;
+        return "Navn: " + navn + " pladser: " + pladserTotal;
     }
 }
