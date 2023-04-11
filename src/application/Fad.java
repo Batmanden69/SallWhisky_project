@@ -4,21 +4,48 @@ import java.util.ArrayList;
 
 public class Fad {
     private int id;
-    private int størrelse;
-    private int antalLiterPåfyldt;
+    private double størrelse;
+    private double antalLiterPåfyldt;
     private boolean tømt;
     private String fadType;
     private String leverandør;
     private Plads plads;
     private ArrayList<Lagring> lagringList = new ArrayList<>();
+    private static int count = 1;
 
 
-    public Fad(int id, int størrelse, String fadType, String leverandør) {
-        this.id = id;
+    public Fad(double størrelse, String fadType, String leverandør) {
         this.størrelse = størrelse;
         this.fadType = fadType;
         this.leverandør = leverandør;
+        this.id = count;
+        count++;
     }
+
+    // Try-Catch setup.
+    public String fyldPå(double mængde) {
+        double ledigPladsFør = størrelse - antalLiterPåfyldt;
+        if (this.antalLiterPåfyldt + mængde > this.størrelse) {
+            return "Der er ikke plads til den valgte mængde. Fadet har kun " + ledigPladsFør + " liter plads ledigt.";
+        } else {
+            this.antalLiterPåfyldt += mængde;
+        }
+        return null;
+    }
+
+    //Try-Catch setup igen.
+    public String hældFra(double mængde) {
+        if (this.antalLiterPåfyldt - mængde < 0) {
+            return "Der er kun " + antalLiterPåfyldt + "liter væske på fadet";
+        } else {
+            this.antalLiterPåfyldt -= mængde;
+            if (this.antalLiterPåfyldt == 0) {
+                tømFad();
+            }
+        }
+        return null;
+    }
+
 
     public ArrayList<Lagring> getNuværendeIndhold() {
         ArrayList<Lagring> results = new ArrayList<>();
@@ -52,19 +79,19 @@ public class Fad {
         this.id = id;
     }
 
-    public int getStørrelse() {
+    public double getStørrelse() {
         return størrelse;
     }
 
-    public void setStørrelse(int størrelse) {
+    public void setStørrelse(double størrelse) {
         this.størrelse = størrelse;
     }
 
-    public int getAntalLiterPåfyldt() {
+    public double getAntalLiterPåfyldt() {
         return antalLiterPåfyldt;
     }
 
-    public void setAntalLiterPåfyldt(int antalLiterPåfyldt) {
+    public void setAntalLiterPåfyldt(double antalLiterPåfyldt) {
         this.antalLiterPåfyldt = antalLiterPåfyldt;
     }
 
@@ -129,7 +156,7 @@ public class Fad {
     }
 
 
-    public int antalLiterLedig() {
+    public double antalLiterLedig() {
         return størrelse - antalLiterPåfyldt;
     }
 
@@ -159,7 +186,7 @@ public class Fad {
         while (lagringList.size() > 0) {
             Lagring lagring = this.getLagringList().get(0);
             nytFad.createLagring(nytFad, lagring.getDestillat());
-//            nytFad.lagringList.add(nyLagring);
+            hældFra(lagring.getDestillat().getMængde());
             this.removeLagring(lagring);
             omhældFad2(nytFad);
         }

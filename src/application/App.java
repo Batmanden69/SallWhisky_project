@@ -11,11 +11,9 @@ public class App {
         Storage storage = Storage.getInstance();
         Controller controller = Controller.getInstance();
 
-        controller.createLager("Lager1", 10);
-
-        Lager lager1 = new Lager("Lager1", 10);
-//        Lager lager1 = new Lager("Lager1", 10);
+//        controller.createLager("Lager1", 10);
 //
+//        Lager lager1 = new Lager("Lager1", 10);
 //
 //        lager1.createPlads(1, 1, lager1);
 //        lager1.createPlads(1, 2, lager1);
@@ -23,23 +21,23 @@ public class App {
 //        lager1.createPlads(1, 4, lager1);
 //
 //
-//        Fad fad1 = new Fad(1, 100, "Fad1", "Leverandør1");
-//        Fad fad2 = new Fad(2, 10, "Fad2", "Leverandør2");
-//        Fad fad3 = new Fad(3, 10, "Fad3", "Leverandør3");
-//        Fad fad4 = new Fad(4, 70, "Fad4", "Leverandør4");
+//        Fad fad1 = new Fad(100, "fad1", "Leverandør1");
+//        Fad fad2 = new Fad(50, "fad2", "Leverandør1");
+//        Fad fad3 = new Fad(25, "fad3", "Leverandør1");
+//        Fad fad4 = new Fad(75, "fad4", "Leverandør1");
+//
 //
 //        fad1.lægPåPlads(lager1);
 //        fad2.lægPåPlads(lager1);
 //        fad3.lægPåPlads(lager1);
 //        fad4.lægPåPlads(lager1);
 //
-//        Destillering destillering1 = new Destillering(100, 1, "Kornsort1", 40, null, null);
-//        Destillering destillering2 = new Destillering(100, 2, "Kornsort2", 40, null, null);
+//        Destillering destillering1 = new Destillering(1000, 1, "Kornsort1", 40, null, null);
+//        Destillering destillering2 = new Destillering(1000, 2, "Kornsort2", 40, null, null);
 //
-//        destillering1.hældPåFad(fad1);
-//        destillering2.hældPåFad(fad2);
-//        System.out.println("blank");
-//        System.out.println(Storage.getInstance().getFadList());
+//        destillering1.hældPåFad2(fad1,100);
+//        destillering2.hældPåFad2(fad2,50);
+
 //
 //
 //
