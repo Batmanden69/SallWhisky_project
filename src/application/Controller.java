@@ -124,7 +124,7 @@ public class Controller {
 //        fad3.omhældFad2(fad4);
         fad3.omhældFad2(fad2);
 //        destillat1.getDestillatHistorik().get(1).setStartDato(LocalDate.of(2021, 01, 01));
-//       destillat2.getDestillatHistorik().get(1).setStartDato(LocalDate.of(2022, 01, 01));
+//        destillat2.getDestillatHistorik().get(1).setStartDato(LocalDate.of(2022, 01, 01));
         System.out.println(fad3.antalLiterLedig());
         System.out.println(fad2.antalLiterLedig());
         System.out.println(fad2.getLagringList());
