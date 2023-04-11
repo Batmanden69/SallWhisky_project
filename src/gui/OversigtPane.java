@@ -14,6 +14,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 
+import javax.swing.*;
+
 public class OversigtPane extends GridPane {
     private final ListView lvwFade = new ListView();
     private final ListView lvwDestillater = new ListView();

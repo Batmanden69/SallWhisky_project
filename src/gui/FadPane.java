@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 
 public class FadPane extends GridPane {
 
-    private TextField idField, størrelseField, fadTypeField, leverandørField, reolNrField, hyldeNrField;
+    private TextField størrelseField, fadTypeField, leverandørField, reolNrField, hyldeNrField;
     private ComboBox lagerCombo;
     private Button opretButton;
 
@@ -79,7 +79,7 @@ public class FadPane extends GridPane {
 
         fad.lægPåPlads(lager);
 
-        idField.setText("");
+//        idField.setText("");
         størrelseField.setText("");
         fadTypeField.setText("");
         leverandørField.setText("");
