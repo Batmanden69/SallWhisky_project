@@ -46,19 +46,19 @@ public class StartWindow extends Application {
         tabFad.setContent(fadPane);
         tabFad.setOnSelectionChanged(event -> fadPane.updateControls());
 
-        Tab tabDestillat = new Tab("Destillat");
+        Tab tabDestillat = new Tab("Lager");
         tabPane.getTabs().add(tabDestillat);
 
-        LagerPane destillatPane = new LagerPane();
-        tabDestillat.setContent(destillatPane);
-        tabDestillat.setOnSelectionChanged(event -> destillatPane.updateControls());
+        LagerPane LagerPane = new LagerPane();
+        tabDestillat.setContent(LagerPane);
+        tabDestillat.setOnSelectionChanged(event -> LagerPane.updateControls());
 
         Tab tabDestillering = new Tab("Destillering");
         tabPane.getTabs().add(tabDestillering);
 
         DestilleringPane destilleringPane = new DestilleringPane();
         tabDestillering.setContent(destilleringPane);
-        tabDestillering.setOnSelectionChanged(event -> destillatPane.updateControls());
+        tabDestillering.setOnSelectionChanged(event -> destilleringPane.updateControls());
 
         Tab tabWhisky = new Tab("Whisky");
         tabPane.getTabs().add(tabWhisky);

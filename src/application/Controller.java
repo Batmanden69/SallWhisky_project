@@ -60,9 +60,10 @@ public class Controller {
         return Storage.getInstance().getDestilleringList();
     }
 
-    public void createLager(String navn, int ledigePladser) {
+    public Lager createLager(String navn, int ledigePladser) {
         Lager lager = new Lager(navn, ledigePladser);
         Storage.getInstance().addLager(lager);
+        return lager;
     }
 
     public void createPlads(int reol, int hylde, Lager lager) {
@@ -96,8 +97,8 @@ public class Controller {
         Destillat destillat2 = this.createDestillat(20, destillering2);
 //        Storage.getInstance().getDestilleringList().get(0).hældPåFad(Storage.getInstance().getFadList().get(0));
 //        Storage.getInstance().getDestilleringList().get(1).hældPåFad(Storage.getInstance().getFadList().get(1));
-        destillat1.hældPåFad(fad1,20);
-        destillat2.hældPåFad(fad2,20);
+        destillat1.hældPåFad(fad1, 20);
+        destillat2.hældPåFad(fad2, 20);
 
 
         destillat1.getDestillatHistorik().get(0).setStartDato(LocalDate.of(2020, 01, 01));
@@ -112,8 +113,6 @@ public class Controller {
         fad1.omhældFad2(fad3);
         fad2.omhældFad2(fad3);
 //        fad3.omhældFad2(fad4);
-
-
 
 
 //        Lager lager1 = new Lager("Lager1", 10);
