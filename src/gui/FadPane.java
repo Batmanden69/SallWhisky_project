@@ -29,10 +29,10 @@ public class FadPane extends GridPane {
         titleLabel.setFont(new Font("Arial", 20));
         add(titleLabel, 0, 0, 2, 1);
 
-        Label idLabel = new Label("ID:");
-        add(idLabel, 0, 1);
-        idField = new TextField();
-        add(idField, 1, 1);
+//        Label idLabel = new Label("ID:");
+//        add(idLabel, 0, 1);
+//        idField = new TextField();
+//        add(idField, 1, 1);
 
         Label størrelseLabel = new Label("Størrelse:");
         add(størrelseLabel, 0, 2);
@@ -68,13 +68,15 @@ public class FadPane extends GridPane {
 
 
     public void opretFadKnap() {
-        int id = Integer.parseInt(idField.getText());
+//        int id = Integer.parseInt(idField.getText());
         int størrelse = Integer.parseInt(størrelseField.getText());
         String fadType = fadTypeField.getText();
         String leverandør = leverandørField.getText();
         Lager lager = (Lager) lagerCombo.getSelectionModel().getSelectedItem();
 
         Fad fad = Controller.getInstance().createFad(id, størrelse, fadType, leverandør);
+
+
 
 
         fad.lægPåPlads(lager);

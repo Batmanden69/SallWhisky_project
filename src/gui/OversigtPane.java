@@ -5,10 +5,15 @@ import application.Destillat;
 import application.Fad;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class OversigtPane extends GridPane {
     private final ListView lvwFade = new ListView();
@@ -52,6 +57,11 @@ public class OversigtPane extends GridPane {
         ChangeListener<Destillat> listener2 = (ov, oldDestillat, newDestillat) -> this.selectedDestillatChanged();
         lvwDestillater.getSelectionModel().selectedItemProperty().addListener(listener2);
 
+        Button omhældBtn = new Button("Omhæld fad");
+        add(omhældBtn, 0, 2, 2, 1);
+
+        omhældBtn.setOnAction(event -> omhældFadKnap());
+
     }
 
     private void selectedDestillatChanged() {
@@ -64,6 +74,41 @@ public class OversigtPane extends GridPane {
 
     private void selectedFadChanged() {
         this.updateControls();
+    }
+
+    public void updateLvwFad() {
+        lvwFade.getItems().setAll(controller.getFadList());
+    }
+
+    private void omhældFadKnap() {
+        Label nytFad = new Label("Vælg nyt fad");
+        ListView nyeFade = new ListView<>();
+        nyeFade.getItems().addAll(controller.getFadList());
+        Fad firstSelectedFad = (Fad) lvwFade.getSelectionModel().getSelectedItem();
+
+
+        Button vælgBtn = new Button("Vælg");
+        vælgBtn.setOnAction(event -> {
+                    Fad selectedFad = (Fad) nyeFade.getSelectionModel().getSelectedItem();
+                    try {
+                        firstSelectedFad.omhældFad2(selectedFad);
+                    } catch (RuntimeException e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                        //   throw new RuntimeException(e.getMessage());
+                    }
+                }
+        );
+
+        GridPane inputGrid = new GridPane();
+        inputGrid.add(nyeFade, 0, 1);
+        inputGrid.add(nytFad, 0, 0);
+        inputGrid.add(vælgBtn, 3, 2);
+
+
+        Dialog<Void> dialog = new Dialog<>();
+        dialog.getDialogPane().setContent(inputGrid);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
+        dialog.showAndWait();
     }
 
     public void updateControls() {
