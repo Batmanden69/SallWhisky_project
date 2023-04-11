@@ -21,6 +21,7 @@ class FadTest {
         assertEquals(1, fadListe.size());
     }
 
+
     @Test
     void lægPåPladsTC2() {
         //Arrange
