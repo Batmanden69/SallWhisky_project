@@ -13,22 +13,6 @@ public class Lager {
         this.pladsListe = new ArrayList<>();
     }
 
-    public String getNavn() {
-        return navn;
-    }
-
-    public void setNavn(String navn) {
-        this.navn = navn;
-    }
-
-    public int getPladserTotal() {
-        return pladserTotal;
-    }
-
-    public void setPladserTotal(int pladserTotal) {
-        this.pladserTotal = pladserTotal;
-    }
-
 
     public Plads createPlads(int reol, int hylde, Lager lager) {
         Plads plads = new Plads(reol, hylde, this);

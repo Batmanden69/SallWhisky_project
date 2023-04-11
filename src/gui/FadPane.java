@@ -69,12 +69,12 @@ public class FadPane extends GridPane {
 
     public void opretFadKnap() {
         int id = Integer.parseInt(idField.getText());
-        int størrelse = Integer.parseInt(størrelseField.getText());
+        double størrelse = Integer.parseInt(størrelseField.getText());
         String fadType = fadTypeField.getText();
         String leverandør = leverandørField.getText();
         Lager lager = (Lager) lagerCombo.getSelectionModel().getSelectedItem();
 
-        Fad fad = Controller.getInstance().createFad(id, størrelse, fadType, leverandør);
+        Fad fad = Controller.getInstance().createFad(størrelse, fadType, leverandør);
 
 
         fad.lægPåPlads(lager);

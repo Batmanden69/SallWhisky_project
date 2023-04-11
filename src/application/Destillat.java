@@ -91,7 +91,6 @@ public class Destillat {
 
     public void hældPåFad(Fad fad, int mængde) {
         Lagring lagring = new Lagring(fad, this);
-        lagring.setStartDato(LocalDate.now());
         fad.setAntalLiterPåfyldt(mængde);
         fad.addLagring(lagring);
         this.addLagring(lagring);

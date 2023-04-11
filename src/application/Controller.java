@@ -110,8 +110,8 @@ public class Controller {
         destillat2.hældPåFad(fad3, 5);
 
 
-        destillat1.getDestillatHistorik().get(0).setStartDato(LocalDate.of(2020, 01, 01));
-        destillat2.getDestillatHistorik().get(0).setStartDato(LocalDate.of(2021, 01, 01));
+//        destillat1.getDestillatHistorik().get(0).setStartDato(LocalDate.of(2020, 01, 01));
+//        destillat2.getDestillatHistorik().get(0).setStartDato(LocalDate.of(2021, 01, 01));
 
         System.out.println(destillat1.destillatLagringOversigt());
         System.out.println(destillat2.destillatLagringOversigt());
@@ -123,8 +123,8 @@ public class Controller {
         fad2.omhældFad2(fad3);
 //        fad3.omhældFad2(fad4);
         fad3.omhældFad2(fad2);
-        destillat1.getDestillatHistorik().get(1).setStartDato(LocalDate.of(2021, 01, 01));
-        destillat2.getDestillatHistorik().get(1).setStartDato(LocalDate.of(2022, 01, 01));
+//        destillat1.getDestillatHistorik().get(1).setStartDato(LocalDate.of(2021, 01, 01));
+//       destillat2.getDestillatHistorik().get(1).setStartDato(LocalDate.of(2022, 01, 01));
         System.out.println(fad3.antalLiterLedig());
         System.out.println(fad2.antalLiterLedig());
         System.out.println(fad2.getLagringList());

@@ -23,27 +23,25 @@ public class Fad {
     }
 
     // Try-Catch setup.
-    public String fyldPå(double mængde) {
-        double ledigPladsFør = størrelse - antalLiterPåfyldt;
-        if (this.antalLiterPåfyldt + mængde > this.størrelse) {
-            return "Der er ikke plads til den valgte mængde. Fadet har kun " + ledigPladsFør + " liter plads ledigt.";
-        } else {
-            this.antalLiterPåfyldt += mængde;
-        }
-        return null;
+    public void fyldPå(double mængde) {
+            double ledigPladsFør = størrelse - antalLiterPåfyldt;
+            if (this.antalLiterPåfyldt + mængde > this.størrelse) {
+                throw new RuntimeException("Der er ikke plads til den valgte mængde. fadet hat kun "+ ledigPladsFør + " liter plads ledig");
+            } else {
+                this.antalLiterPåfyldt += mængde;
+            }
     }
 
     //Try-Catch setup igen.
-    public String hældFra(double mængde) {
+    public void hældFra(double mængde) {
         if (this.antalLiterPåfyldt - mængde < 0) {
-            return "Der er kun " + antalLiterPåfyldt + "liter væske på fadet";
+            throw new RuntimeException("Der er kun " + antalLiterPåfyldt +" liter væske påfyldt");
         } else {
             this.antalLiterPåfyldt -= mængde;
             if (this.antalLiterPåfyldt == 0) {
                 tømFad();
             }
         }
-        return null;
     }
 
 
@@ -170,15 +168,6 @@ public class Fad {
         antalLiterPåfyldt = 0;
     }
 
-    public void omhældFad(Fad nytFad) {
-        if (lagringList.size() > 0) {
-            Lagring lagring = lagringList.remove(0);
-            Lagring nyLagring = nytFad.createLagring(nytFad, lagring.getDestillat());
-            nytFad.lagringList.add(nyLagring);
-            omhældFad(nytFad);
-        }
-    }
-
     public void omhældFad2(Fad nytFad) {
         if (lagringList.size() == 0) {
             tømFad();
@@ -187,6 +176,7 @@ public class Fad {
             Lagring lagring = this.getLagringList().get(0);
             nytFad.createLagring(nytFad, lagring.getDestillat());
             hældFra(lagring.getDestillat().getMængde());
+            nytFad.fyldPå(lagring.getDestillat().getMængde());
             this.removeLagring(lagring);
             omhældFad2(nytFad);
         }
@@ -197,3 +187,4 @@ public class Fad {
         return id;
     }
 }
+
