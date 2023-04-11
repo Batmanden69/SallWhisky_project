@@ -5,20 +5,20 @@ import java.util.ArrayList;
 
 public class Whisky {
     private int batchId;
-    private double mængde;
+    private double antalLiter;
     private ArrayList<Destillat> destillatList = new ArrayList<>();
 
     public Whisky(int batchId, double mængde) {
         this.batchId = batchId;
-        this.mængde = mængde;
+        this.antalLiter = mængde;
     }
 
     public int getBatchId() {
         return batchId;
     }
 
-    public double getMængde() {
-        return mængde;
+    public double getAntalLiter() {
+        return antalLiter;
     }
 
     public ArrayList<Destillat> getDestillatList() {
@@ -58,7 +58,7 @@ public class Whisky {
     public String toString() {
         return "Whisky{" +
                 "batchId=" + batchId +
-                ", mængde=" + mængde +
+                ", mængde=" + antalLiter +
                 ", destillatList=" + destillatList +
                 '}';
     }
