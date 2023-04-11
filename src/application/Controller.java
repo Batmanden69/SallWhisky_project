@@ -50,6 +50,10 @@ public class Controller {
         return Storage.getInstance().getDestillatList();
     }
 
+    public ArrayList<Lager> getLagerList() {
+        return Storage.getInstance().getLagerList();
+    }
+
     public Destillering createDestillering(int antalLiter, int maltBatch, String kornsort, double alkoholProcent, String rygemateriale, String kommentar) {
         Destillering destillering = new Destillering(antalLiter, maltBatch, kornsort, alkoholProcent, rygemateriale, kommentar);
         Storage.getInstance().addDestillering(destillering);
