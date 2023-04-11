@@ -99,70 +99,8 @@ public class Controller {
 
         Destillat destillat1 = this.createDestillat(20, destillering1);
         Destillat destillat2 = this.createDestillat(5, destillering2);
-//        Storage.getInstance().getDestilleringList().get(0).hældPåFad(Storage.getInstance().getFadList().get(0));
-//        Storage.getInstance().getDestilleringList().get(1).hældPåFad(Storage.getInstance().getFadList().get(1));
-        destillat1.hældPåFad(fad1, 20);
-        destillat2.hældPåFad(fad2, 20);
-        System.out.println(destillering1.getAntalLiterOprindeligt());
-        System.out.println(destillering1.getAntalLiterTilbage());
-        destillat1.hældPåFad(fad3, 20);
-        System.out.println(destillering1.getAntalLiterTilbage());
-        destillat2.hældPåFad(fad3, 5);
 
 
-//        destillat1.getDestillatHistorik().get(0).setStartDato(LocalDate.of(2020, 01, 01));
-//        destillat2.getDestillatHistorik().get(0).setStartDato(LocalDate.of(2021, 01, 01));
-
-        System.out.println(destillat1.destillatLagringOversigt());
-        System.out.println(destillat2.destillatLagringOversigt());
-
-//        destillering1.getDestillatList().get(0).getDestillatHistorik().get(0).setStartDato(LocalDate.of(2020, 01, 01));
-//        destillering2.getDestillatList().get(0).getDestillatHistorik().get(0).setStartDato(LocalDate.of(2021, 01, 01));
-
-        fad1.omhældFad2(fad3);
-        fad2.omhældFad2(fad3);
-//        fad3.omhældFad2(fad4);
-        fad3.omhældFad2(fad2);
-//        destillat1.getDestillatHistorik().get(1).setStartDato(LocalDate.of(2021, 01, 01));
-//        destillat2.getDestillatHistorik().get(1).setStartDato(LocalDate.of(2022, 01, 01));
-        System.out.println(fad3.antalLiterLedig());
-        System.out.println(fad2.antalLiterLedig());
-        System.out.println(fad2.getLagringList());
-
-////        System.out.println(destillat1.destillatLagringOversigt());
-////        System.out.println(destillat2.destillatLagringOversigt());
-//
-////        destillering1.getDestillatList().get(0).getDestillatHistorik().get(0).setStartDato(LocalDate.of(2020, 01, 01));
-////        destillering2.getDestillatList().get(0).getDestillatHistorik().get(0).setStartDato(LocalDate.of(2021, 01, 01));
-//
-//        fad1.omhældFad2(fad3);
-//        fad2.omhældFad2(fad3);
-
-
-//        Lager lager1 = new Lager("Lager1", 10);
-//
-//
-//        lager1.createPlads(1, 1, lager1);
-//        lager1.createPlads(1, 2, lager1);
-//        lager1.createPlads(1, 3, lager1);
-//        lager1.createPlads(1, 4, lager1);
-//
-//
-//        Fad fad1 = new Fad(1, 100, "Fad1", "Leverandør1");
-//        Fad fad2 = new Fad(2, 10, "Fad2", "Leverandør2");
-//        Fad fad3 = new Fad(3, 10, "Fad3", "Leverandør3");
-//        Fad fad4 = new Fad(4, 70, "Fad4", "Leverandør4");
-//
-//        fad1.lægPåPlads(lager1);
-//        fad2.lægPåPlads(lager1);
-//        fad3.lægPåPlads(lager1);
-//        fad4.lægPåPlads(lager1);
-//
-//        Destillering destillering1 = new Destillering(100, 1, "Kornsort1", 40, null, null);
-//        Destillering destillering2 = new Destillering(100, 2, "Kornsort2", 40, null, null);
-//
-//        destillering1.hældPåFad(fad1);
-//        destillering2.hældPåFad(fad2);
 
 
     }

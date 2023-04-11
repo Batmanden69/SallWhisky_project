@@ -88,7 +88,6 @@ public class Destillat {
         }
         return oversigt;
     }
-
     public void hældPåFad(Fad fad, int mængde) {
         Lagring lagring = new Lagring(fad, this);
         fad.setAntalLiterPåfyldt(mængde);

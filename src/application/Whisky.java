@@ -38,6 +38,16 @@ public class Whisky {
         }
     }
 
+
+    public ArrayList<Fad> fadHistorik() {
+        ArrayList<Fad> fadHistorik = new ArrayList<>();
+        for (Destillat d : getDestillatList()) {
+            for (Lagring l : d.getDestillatHistorik()) {
+                fadHistorik.add(l.getFad());
+            }
+        }
+        return fadHistorik;
+    }
     public ArrayList<Destillering> destilleringHistorik() {
         ArrayList<Destillering> destilleringHistorik = new ArrayList<>();
         for (Destillat d : getDestillatList()) {
