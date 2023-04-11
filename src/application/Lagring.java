@@ -6,7 +6,7 @@ import java.time.temporal.ChronoUnit;
 public class Lagring {
     private Fad fad;
     private Destillat destillat;
-    private LocalDate startDato;
+    private final LocalDate startDato;
     private LocalDate slutDato;
 
     public Lagring(Fad fad, Destillat destillat) {
@@ -63,9 +63,9 @@ public class Lagring {
         return startDato;
     }
 
-    public void setStartDato(LocalDate startDato) {
-        this.startDato = startDato;
-    }
+//    public void setStartDato(LocalDate startDato) {
+//        this.startDato = startDato;
+//    }
 
     public long getLagringsperiode() {
         long daysBetween;

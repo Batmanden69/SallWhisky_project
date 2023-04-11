@@ -8,13 +8,14 @@ public class Destillat {
     private Destillering destillering;
     private int destillatId;
     private static int count = 1;
-    private int mængde;
+    private double mængde;
 
-    public Destillat(int mængde, Destillering destillering) {
+    public Destillat(double mængde, Destillering destillering) {
         this.mængde = mængde;
         this.destillering = destillering;
         this.destillatId = count;
         count++;
+        destillering.setAntalLiterTilbage(destillering.getAntalLiterTilbage() - mængde);
 
     }
 
@@ -44,7 +45,7 @@ public class Destillat {
         return destillering;
     }
 
-    public int getMængde() {
+    public double getMængde() {
         return mængde;
     }
 
@@ -72,13 +73,13 @@ public class Destillat {
                 "Malt Batch Nr: " + this.getDestillering().getMaltBatch() + "\n" +
                 "Kornsort: " + this.getDestillering().getKornsort() + "\n" +
                 "Rygemateriale: " + this.getDestillering().getRygemateriale() + "\n" +
-                "Antal liter: " + this.getDestillering().getAntalLiter() + "\n" +
+                "Antal liter: " + this.getDestillering().getAntalLiterOprindeligt() + "\n" +
                 "Alkoholprocent: " + this.getDestillering().getAlkoholProcent() + "\n" +
                 "Kommentar: " + this.getDestillering().getKommentar();
     }
 
     public String destillatLagringOversigt(){
-        String oversigt = "\n";
+        String oversigt="";
         for (Lagring lagring : destillatHistorik) {
             oversigt += "Fad ID: " + lagring.getFad().getFadId() + "\n" +
                     "Dato påfyldt: " + lagring.getStartDato() + "\n" +
