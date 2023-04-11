@@ -52,6 +52,7 @@ public class FadPane extends GridPane {
         Label pladsLabel = new Label("Lager:");
         add(pladsLabel, 0, 5);
         lagerCombo = new ComboBox();
+        lagerCombo.getItems().addAll(Controller.getInstance().getLagerList());
         add(lagerCombo, 1, 5);
 
         opretButton = new Button("Opret fad");
@@ -74,6 +75,7 @@ public class FadPane extends GridPane {
         Lager lager = (Lager) lagerCombo.getSelectionModel().getSelectedItem();
 
         Fad fad = Controller.getInstance().createFad(id, størrelse, fadType, leverandør);
+
 
         fad.lægPåPlads(lager);
 
