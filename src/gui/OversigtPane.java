@@ -8,12 +8,11 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
-
-import javax.swing.*;
-import java.awt.*;
 
 public class OversigtPane extends GridPane {
     private final ListView lvwFade = new ListView();
@@ -114,14 +113,14 @@ public class OversigtPane extends GridPane {
     public void updateControls() {
         Fad fad = (Fad) lvwFade.getSelectionModel().getSelectedItem();
         Destillat destillat = (Destillat) lvwDestillater.getSelectionModel().getSelectedItem();
-        if (fad != null) {
+        if (fad != null && fad.getDestillater() != null) {
             lvwDestillater.getItems().setAll(fad.getDestillater());
         } else {
             lvwDestillater.getItems().clear();
             txaDestillering.clear();
             txaLagring.clear();
         }
-        if (destillat != null) {
+        if (destillat != null && destillat.getDestillatHistorik() != null) {
             txaDestillering.setText(destillat.destillatDestilleringOversigt());
             txaLagring.setText(destillat.destillatLagringOversigt());
         } else {

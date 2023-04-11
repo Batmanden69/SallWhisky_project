@@ -19,26 +19,6 @@ public class Plads {
         return lager;
     }
 
-    public void setLager(Lager lager) {
-        this.lager = lager;
-    }
-
-    public int getReol() {
-        return reol;
-    }
-
-    public void setReol(int reol) {
-        this.reol = reol;
-    }
-
-    public int getHylde() {
-        return hylde;
-    }
-
-    public void setHylde(int hylde) {
-        this.hylde = hylde;
-    }
-
     public void setOptaget(boolean optaget) {
         this.optaget = optaget;
     }

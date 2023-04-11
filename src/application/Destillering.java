@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Destillering {
 
-    private int antalLiter;
+    private double antalLiterTilbage;
+    private final double antalLiterOprindeligt;
     private int maltBatch;
     private String kornsort;
     private int newMakeNr;
@@ -16,8 +17,9 @@ public class Destillering {
 
     private final ArrayList<Destillat> destillatList = new ArrayList<>();
 
-    public Destillering(int antalLiter, int maltBatch, String kornsort, double alkoholProcent, String rygemateriale, String kommentar) {
-        this.antalLiter = antalLiter;
+    public Destillering(double antalLiterTilbage, int maltBatch, String kornsort, double alkoholProcent, String rygemateriale, String kommentar) {
+        this.antalLiterTilbage = antalLiterTilbage;
+        this.antalLiterOprindeligt = antalLiterTilbage;
         this.maltBatch = maltBatch;
         this.kornsort = kornsort;
         this.newMakeNr = count;
@@ -31,15 +33,25 @@ public class Destillering {
         return new ArrayList<>(destillatList);
     }
 
-    public Destillat createDestillat(int mængde) {
+    public Destillat createDestillat(double mængde) {
         Destillat des = new Destillat(mængde, this);
         destillatList.add(des);
         return des;
     }
 
-    public int getAntalLiter() {
-        return antalLiter;
+    public double getAntalLiterTilbage() {
+        return antalLiterTilbage;
     }
+
+    public void setAntalLiterTilbage(double antalLiterTilbage) {
+        this.antalLiterTilbage = antalLiterTilbage;
+    }
+
+    public double getAntalLiterOprindeligt() {
+        return antalLiterOprindeligt;
+    }
+
+
 
     public int getNewMakeNr() {
         return newMakeNr;
@@ -64,7 +76,16 @@ public class Destillering {
         Destillat destillat = createDestillat(fad.getStørrelse());
         Lagring lagring = fad.createLagring(fad, destillat);
         destillat.addLagring(lagring);
-        antalLiter -= fad.getStørrelse();
+        fad.fyldPå(fad.getStørrelse());
+
+    }
+
+    public void hældPåFad2(Fad fad, double mængde){
+        Destillat destillat = createDestillat(mængde);
+        Lagring lagring = fad.createLagring(fad, destillat);
+        destillat.addLagring(lagring);
+        fad.fyldPå(mængde);
+
     }
 
     @Override
