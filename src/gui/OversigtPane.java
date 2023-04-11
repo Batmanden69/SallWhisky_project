@@ -97,6 +97,7 @@ public class OversigtPane extends GridPane {
                         JOptionPane.showMessageDialog(null, e.getMessage());
                         //   throw new RuntimeException(e.getMessage());
                     }
+
                 }
         );
 
@@ -110,6 +111,7 @@ public class OversigtPane extends GridPane {
         dialog.getDialogPane().setContent(inputGrid);
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
         dialog.showAndWait();
+
     }
 
     public void updateControls() {

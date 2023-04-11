@@ -52,7 +52,6 @@ public class Destillering {
     }
 
 
-
     public int getNewMakeNr() {
         return newMakeNr;
     }
@@ -72,6 +71,12 @@ public class Destillering {
     }
 
     //Opretter et destillat på størrelse med fadets størrelse og tilføjer det til destillatList.
+
+    /**
+     *
+     * @param fad
+     * pre: dette kræver at fadet er stort nok
+     */
     public void hældPåFad(Fad fad) {
         Destillat destillat = createDestillat(fad.getStørrelse());
         Lagring lagring = fad.createLagring(fad, destillat);
@@ -80,7 +85,7 @@ public class Destillering {
 
     }
 
-    public void hældPåFad2(Fad fad, double mængde){
+    public void hældPåFad2(Fad fad, double mængde) {
         Destillat destillat = createDestillat(mængde);
         Lagring lagring = fad.createLagring(fad, destillat);
         destillat.addLagring(lagring);
@@ -90,7 +95,13 @@ public class Destillering {
 
     @Override
     public String toString() {
-        return newMakeNr + "    " + maltBatch + "   " + kornsort + "   " + rygemateriale;
+        return "NewMakeNR: " + newMakeNr +
+                "\nAntal liter: " + antalLiterTilbage +
+                "\nMaltBatch: " + maltBatch +
+                "\nKornSort: " + kornsort +
+                "\nRygematriale: " + rygemateriale +
+                "\nKommentar: " + kommentar +
+                "\n-------------------------------";
     }
 
     public int getMaltBatch() {
@@ -101,7 +112,7 @@ public class Destillering {
         return kornsort;
     }
 
-    public String getRygemateriale(){
+    public String getRygemateriale() {
         return rygemateriale;
     }
 
