@@ -4,9 +4,11 @@ import application.Controller;
 import application.Destillat;
 import application.Fad;
 import application.Lagring;
+import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
@@ -27,7 +29,7 @@ public class WhiskyWindow extends Stage {
         GridPane pane = new GridPane();
         this.initContent(pane);
 
-        Scene scene =new Scene(pane);
+        Scene scene = new Scene(pane);
         this.setScene(scene);
 
     }
@@ -35,6 +37,9 @@ public class WhiskyWindow extends Stage {
     private ListView<Fad> lvwFad;
     private ListView<Destillat> lvwDestillat;
     private Controller controller;
+
+    private Button opretWhiskyBtn;
+
     private void initContent(GridPane pane) {
         controller = Controller.getInstance();
         pane.setAlignment(Pos.CENTER);
@@ -44,25 +49,40 @@ public class WhiskyWindow extends Stage {
 
         Label lblFad = new Label("Fad");
         lblFad.setFont(new Font("Arial", 20));
-        pane.add(lblFad,0,1);
+        pane.add(lblFad, 0, 1);
 
         lvwFad = new ListView<>();
-        pane.add(lvwFad,0,2);
+        pane.add(lvwFad, 0, 2);
+
+        ChangeListener<Fad> listener = (ov, oldFad, newFad) -> this.selectedFadChanged();
+        lvwFad.getSelectionModel().selectedItemProperty().addListener(listener);
 
         Label lblDestillat = new Label("Destillater");
         lblDestillat.setFont(new Font("Arial", 20));
-        pane.add(lblDestillat,1,1);
+        pane.add(lblDestillat, 1, 1);
 
         lvwDestillat = new ListView<>();
-        pane.add(lvwDestillat,1,2);
+        pane.add(lvwDestillat, 1, 2);
+
+        opretWhiskyBtn = new Button("Opret whisky");
+        pane.add(opretWhiskyBtn, 2, 1);
+
+
+        updateFadList();
     }
 
     //---------------------------------------------------------------------
     //metoder
 
-    public void updateFadList(){
+    public void updateFadList() {
         lvwFad.getItems().setAll(controller.getFadList());
     }
+
+    private void selectedFadChanged() {
+        this.updateControls();
+
+    }
+
 
     private ArrayList<Fad> klarFad() {
         ArrayList<Fad> fads = new ArrayList<>();
@@ -76,5 +96,13 @@ public class WhiskyWindow extends Stage {
         return fads;
     }
 
-
+    private void updateControls() {
+        Fad fad = (Fad) lvwFad.getSelectionModel().getSelectedItem();
+        Destillat destillat = (Destillat) lvwDestillat.getSelectionModel().getSelectedItem();
+        if (fad != null && fad.getDestillater() != null) {
+            lvwDestillat.getItems().setAll(fad.getDestillater());
+        } else {
+            lvwDestillat.getItems().clear();
+        }
+    }
 }

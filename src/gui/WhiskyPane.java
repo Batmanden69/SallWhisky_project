@@ -37,7 +37,7 @@ public class WhiskyPane extends GridPane {
         add(lvwWhisky, 0, 1);
         lvwWhisky.getItems().setAll(controller.getWhiskyList());
 
-        ChangeListener<Whisky> listener = (ov, oldWhisky, newWhisky) -> this.selectedwhiskyChanged();
+        ChangeListener<Whisky> listener = (ov, oldWhisky, newWhisky) -> this.selectedWhiskyChanged();
         lvwWhisky.getSelectionModel().selectedItemProperty().addListener(listener);
 
         Label titleHistorik = new Label("Destillater");
@@ -59,7 +59,7 @@ public class WhiskyPane extends GridPane {
 
         sletWhiskyButton = new Button("Slet whisky");
         add(sletWhiskyButton, 0, 2);
-        sletWhiskyButton.setOnAction(event -> sletwhiskyKnap());
+        sletWhiskyButton.setOnAction(event -> sletWhiskyKnap());
 
         opretWhiskyButton = new Button("Opret Whisky");
         add(opretWhiskyButton,2,2);
@@ -69,7 +69,7 @@ public class WhiskyPane extends GridPane {
     //-------------------------------------#
     //Metoder
 
-    private void sletwhiskyKnap(){
+    private void sletWhiskyKnap(){
         int selectedIndex = lvwWhisky.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             lvwWhisky.getItems().remove(selectedIndex);
@@ -82,7 +82,7 @@ public class WhiskyPane extends GridPane {
         window.updateFadList();
     }
 
-    private void selectedwhiskyChanged() {
+    private void selectedWhiskyChanged() {
         this.updateControls();
     }
     private void selectedDestillatChanged(){
@@ -90,7 +90,6 @@ public class WhiskyPane extends GridPane {
     }
 
     public void updateControls() {
-
         Whisky whisky = (Whisky) lvwWhisky.getSelectionModel().getSelectedItem();
         Destillat destillat = (Destillat) lvwDestillat.getSelectionModel().getSelectedItem();
 
