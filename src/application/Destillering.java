@@ -96,7 +96,7 @@ public class Destillering {
     @Override
     public String toString() {
         return "NewMakeNR: " + newMakeNr +
-                "\nAntal liter: " + antalLiterTilbage +
+                "\nAntal liter tilbage: " + antalLiterTilbage +
                 "\nMaltBatch: " + maltBatch +
                 "\nKornSort: " + kornsort +
                 "\nAlkohol procent: " + alkoholProcent +

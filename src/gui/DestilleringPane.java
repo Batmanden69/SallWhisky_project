@@ -116,8 +116,18 @@ public class DestilleringPane extends GridPane {
         hældBtn.setOnAction(event -> {
             Fad selectedFad = (Fad) fade.getSelectionModel().getSelectedItem();
             Destillering destillering = (Destillering) lvwDestilleringer.getSelectionModel().getSelectedItem();
-            destillering.hældPåFad2(selectedFad, Double.parseDouble(txfMængde.getText()));
-            updateDestilleringListview();
+            if (selectedFad == null) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Vælg et fad");
+                alert.setContentText("Du mangler at vælge et fad");
+                alert.showAndWait();
+            } else {
+                destillering.hældPåFad2(selectedFad, Double.parseDouble(txfMængde.getText()));
+                updateDestilleringListview();
+                txfMængde.setText("");
+            }
+
+
         });
 
         GridPane inputGrid = new GridPane();

@@ -49,24 +49,32 @@ public class LagerPane extends GridPane {
     }
 
     private void opretLager() {
-        TextField txtNavn = new TextField();
-        TextField txtPladser = new TextField();
+        TextField txfNavn = new TextField();
+        TextField txfPladser = new TextField();
         Label lblNavn = new Label("Navn:");
         Label lblPladser = new Label("Antal pladser:");
 
         GridPane inputGrid = new GridPane();
         inputGrid.add(lblNavn, 0, 0);
-        inputGrid.add(txtNavn, 1, 0);
+        inputGrid.add(txfNavn, 1, 0);
         inputGrid.add(lblPladser, 0, 1);
-        inputGrid.add(txtPladser, 1, 1);
+        inputGrid.add(txfPladser, 1, 1);
 
         Button btnTilføj = new Button("Tilføj");
         btnTilføj.setOnAction(e -> {
-            String navn = txtNavn.getText();
-            int pladser = Integer.parseInt(txtPladser.getText());
-            if (!navn.isEmpty()) {
+            String navn = txfNavn.getText();
+            int pladser = Integer.parseInt(txfPladser.getText());
+            if (navn.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Manglende information");
+                alert.setContentText("Du mangler at angive navn eller antal pladser");
+                alert.showAndWait();
+            } else {
                 Lager lager = Controller.getInstance().createLager(navn, pladser);
                 lvwLager.getItems().add(lager);
+
+                txfNavn.setText("");
+                txfPladser.setText("");
             }
         });
 

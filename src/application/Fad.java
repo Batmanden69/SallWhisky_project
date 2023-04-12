@@ -25,7 +25,7 @@ public class Fad {
 
     public void fyldPå(double mængde) {
             double ledigPladsFør = størrelse - antalLiterPåfyldt;
-            if (mængde <0) {
+            if (mængde < 0) {
                 throw new RuntimeException("Mængden skal være større end 0");
             }
             else if (this.antalLiterPåfyldt + mængde > this.størrelse) {
