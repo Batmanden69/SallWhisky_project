@@ -85,23 +85,16 @@ public class DestilleringPane extends GridPane {
     //--------------------------------------
     //metoder
     private void opretDestillering() {
-        int liter = Integer.parseInt(txfAntalLiter.getText());
-        int maltbatch = Integer.parseInt(txfMaltBatch.getText());
-        String kornsort = txfKornsort.getText();
-        double alkoProcent = Double.parseDouble(txfAlkoholProcent.getText());
-        String rygeMateriale = txfRygematriale.getText();
-        String kommentar = txfKommentar.getText();
+        try {
+            int liter = Integer.parseInt(txfAntalLiter.getText());
+            int maltbatch = Integer.parseInt(txfMaltBatch.getText());
+            String kornsort = txfKornsort.getText();
+            double alkoProcent = Double.parseDouble(txfAlkoholProcent.getText());
+            String rygeMateriale = txfRygematriale.getText();
+            String kommentar = txfKommentar.getText();
 
-        if (txfAntalLiter.getText().isEmpty() || txfMaltBatch.getText().isEmpty() ||
-                kornsort.isEmpty() || txfAlkoholProcent.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Manglende information");
-            alert.setContentText("Du mangler at angive information om destilleringen");
-            alert.showAndWait();
-        } else {
             Destillering destillering = Controller.getInstance().createDestillering(liter, maltbatch,
                     kornsort, alkoProcent, rygeMateriale, kommentar);
-
 
             updateDestilleringListview();
 
@@ -111,19 +104,26 @@ public class DestilleringPane extends GridPane {
             txfAlkoholProcent.setText("");
             txfRygematriale.setText("");
             txfKommentar.setText("");
+
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ugyldigt input");
+            alert.setContentText("Indtast venligst gyldige værdier for liter, maltbatch og alkoholprocent.");
+            alert.showAndWait();
         }
     }
 
+
     private void hældPåFadAction() {
         Label lblfade = new Label("Fadeliste: ");
-        ListView fade = new ListView<>();
+        ListView<Fad> fade = new ListView<>();
         fade.getItems().setAll(controller.getFadList());
         Label lblMængde = new Label("Mængde: ");
         TextField txfMængde = new TextField();
 
         Button hældBtn = new Button("Hæld på fad");
         hældBtn.setOnAction(event -> {
-            Fad selectedFad = (Fad) fade.getSelectionModel().getSelectedItem();
+            Fad selectedFad = fade.getSelectionModel().getSelectedItem();
             Destillering destillering = (Destillering) lvwDestilleringer.getSelectionModel().getSelectedItem();
             if (selectedFad == null) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -136,7 +136,6 @@ public class DestilleringPane extends GridPane {
                 txfMængde.setText("");
             }
 
-
         });
 
         GridPane inputGrid = new GridPane();
@@ -148,8 +147,14 @@ public class DestilleringPane extends GridPane {
 
 
         Dialog<Void> dialog = new Dialog<>();
-        dialog.getDialogPane().setContent(inputGrid);
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
+        dialog.getDialogPane().
+
+                setContent(inputGrid);
+        dialog.getDialogPane().
+
+                getButtonTypes().
+
+                addAll(ButtonType.CANCEL);
         dialog.showAndWait();
 
     }

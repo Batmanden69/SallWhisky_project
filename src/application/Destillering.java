@@ -100,7 +100,7 @@ public class Destillering {
                 "\nMaltBatch: " + maltBatch +
                 "\nKornSort: " + kornsort +
                 "\nAlkohol procent: " + alkoholProcent +
-                "\nRygematriale: " + rygemateriale +
+                "\nRygemateriale: " + rygemateriale +
                 "\nKommentar: " + kommentar +
                 "\n-------------------------------";
     }

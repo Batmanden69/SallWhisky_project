@@ -63,20 +63,29 @@ public class LagerPane extends GridPane {
         Button btnTilføj = new Button("Tilføj");
         btnTilføj.setOnAction(e -> {
             String navn = txfNavn.getText();
-            int pladser = Integer.parseInt(txfPladser.getText());
-            if (navn.isEmpty() || txfPladser.getText().isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Manglende information");
-                alert.setContentText("Du mangler at angive navn eller antal pladser");
-                alert.showAndWait();
-            } else {
-                Lager lager = Controller.getInstance().createLager(navn, pladser);
-                lvwLager.getItems().add(lager);
+            String pladserString = txfPladser.getText();
+            try {
+                int pladser = Integer.parseInt(pladserString);
+                if (navn.isBlank() || pladserString.isBlank()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Manglende information");
+                    alert.setContentText("Du mangler at angive navn");
+                    alert.showAndWait();
+                } else {
+                    Lager lager = Controller.getInstance().createLager(navn, pladser);
+                    lvwLager.getItems().add(lager);
 
-                txfNavn.setText("");
-                txfPladser.setText("");
+                    txfNavn.setText("");
+                    txfPladser.setText("");
+                }
+            } catch (NumberFormatException ex) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Ugyldigt input");
+                alert.setContentText("Antal pladser skal være et heltal");
+                alert.showAndWait();
             }
         });
+
 
         GridPane buttonGrid = new GridPane();
         buttonGrid.add(btnTilføj, 0, 0);

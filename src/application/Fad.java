@@ -29,7 +29,7 @@ public class Fad {
                 throw new RuntimeException("Mængden skal være større end 0");
             }
             else if (this.antalLiterPåfyldt + mængde > this.størrelse) {
-                throw new RuntimeException("Der er ikke plads til den valgte mængde. Fadet har kun "+ ledigPladsFør + " liter plads ledig");
+                throw new RuntimeException("Fadet bliver overfyldt med "+ ledigPladsFør + " liter");
             }
             else {
                 this.antalLiterPåfyldt += mængde;
