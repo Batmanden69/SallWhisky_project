@@ -84,7 +84,7 @@ public class Destillering {
     }
 
     public void hældPåFad2(Fad fad, double mængde) {
-        antalLiterTilbage -= mængde;
+//        antalLiterTilbage -= mængde;
 
         Destillat destillat = createDestillat(mængde);
         Lagring lagring = fad.createLagring(fad, destillat);
