@@ -70,22 +70,13 @@ public class Destillering {
         }
     }
 
-    //Opretter et destillat på størrelse med fadets størrelse og tilføjer det til destillatList.
-
     /**
-     * @param fad pre: dette kræver at fadet er stort nok
+     * @param fad
+     * pre: antalLiterTilbage >0.
+     * post: antalLiterTilbage er reduceret med destillatets størrelse.
+     *       der oprettes et lagringsobjekt, der forbindes til fadet og destillatet.
      */
-    public void hældPåFad(Fad fad) {
-        Destillat destillat = createDestillat(fad.getStørrelse());
-        Lagring lagring = fad.createLagring(fad, destillat);
-        destillat.addLagring(lagring);
-        fad.fyldPå(fad.getStørrelse());
-
-    }
-
     public void hældPåFad2(Fad fad, double mængde) {
-//        antalLiterTilbage -= mængde;
-
         Destillat destillat = createDestillat(mængde);
         Lagring lagring = fad.createLagring(fad, destillat);
         destillat.addLagring(lagring);
