@@ -16,7 +16,9 @@ public class WhiskyPane extends GridPane {
     private ListView<Destillat> lvwDestillat;
     private ListView<Lagring> lvwLagring;
     private Button sletWhiskyButton;
+    private Button opretWhiskyButton;
     private Controller controller;
+    private WhiskyWindow whiskyWindow;
 
     public WhiskyPane() {
 
@@ -53,11 +55,15 @@ public class WhiskyPane extends GridPane {
         add(lblLagringshistorik,2,0,2,1);
 
         lvwLagring = new ListView<>();
-        add(lvwLagring,3,1);
+        add(lvwLagring,2,1);
 
         sletWhiskyButton = new Button("Slet whisky");
         add(sletWhiskyButton, 0, 2);
         sletWhiskyButton.setOnAction(event -> sletwhiskyKnap());
+
+        opretWhiskyButton = new Button("Opret Whisky");
+        add(opretWhiskyButton,2,2);
+        opretWhiskyButton.setOnAction(event -> opretWhiskyKnap());
     }
 
     //-------------------------------------#
@@ -68,6 +74,12 @@ public class WhiskyPane extends GridPane {
         if (selectedIndex >= 0) {
             lvwWhisky.getItems().remove(selectedIndex);
         }
+    }
+
+    private void opretWhiskyKnap(){
+        WhiskyWindow window = new WhiskyWindow();
+        window.showAndWait();
+        window.updateFadList();
     }
 
     private void selectedwhiskyChanged() {
