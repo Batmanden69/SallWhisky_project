@@ -64,7 +64,7 @@ public class LagerPane extends GridPane {
         btnTilføj.setOnAction(e -> {
             String navn = txfNavn.getText();
             int pladser = Integer.parseInt(txfPladser.getText());
-            if (navn.isEmpty()) {
+            if (navn.isEmpty() || txfPladser.getText().isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Manglende information");
                 alert.setContentText("Du mangler at angive navn eller antal pladser");

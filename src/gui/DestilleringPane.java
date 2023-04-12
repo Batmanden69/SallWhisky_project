@@ -92,17 +92,26 @@ public class DestilleringPane extends GridPane {
         String rygeMateriale = txfRygematriale.getText();
         String kommentar = txfKommentar.getText();
 
-        Destillering destillering = Controller.getInstance().createDestillering(liter, maltbatch,
-                kornsort, alkoProcent, rygeMateriale, kommentar);
+        if (txfAntalLiter.getText().isEmpty() || txfMaltBatch.getText().isEmpty() ||
+                kornsort.isEmpty() || txfAlkoholProcent.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Manglende information");
+            alert.setContentText("Du mangler at angive information om destilleringen");
+            alert.showAndWait();
+        } else {
+            Destillering destillering = Controller.getInstance().createDestillering(liter, maltbatch,
+                    kornsort, alkoProcent, rygeMateriale, kommentar);
 
-        updateDestilleringListview();
 
-        txfAntalLiter.setText("");
-        txfMaltBatch.setText("");
-        txfKornsort.setText("");
-        txfAlkoholProcent.setText("");
-        txfRygematriale.setText("");
-        txfKommentar.setText("");
+            updateDestilleringListview();
+
+            txfAntalLiter.setText("");
+            txfMaltBatch.setText("");
+            txfKornsort.setText("");
+            txfAlkoholProcent.setText("");
+            txfRygematriale.setText("");
+            txfKommentar.setText("");
+        }
     }
 
     private void hældPåFadAction() {
