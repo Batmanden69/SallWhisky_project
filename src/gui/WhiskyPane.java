@@ -46,18 +46,21 @@ public class WhiskyPane extends GridPane {
 
         sletWhiskyButton = new Button("Slet whisky");
         add(sletWhiskyButton, 1, 3);
+        sletWhiskyButton.setOnAction(event -> sletwhiskyKnap());
     }
 
     //-------------------------------------#
     //Metoder
 
+    private void sletwhiskyKnap(){
+        int selectedIndex = lvwWhisky.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            lvwWhisky.getItems().remove(selectedIndex);
+        }
+    }
 
     private void selectedwhiskyChanged() {
         this.updateControls();
-    }
-
-    public void updateFadList() {
-        lvwWhisky.getItems().setAll(Controller.getInstance().getWhiskyList());
     }
 
     public void updateControls() {

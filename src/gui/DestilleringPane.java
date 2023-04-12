@@ -27,7 +27,7 @@ public class DestilleringPane extends GridPane {
 
     public DestilleringPane() {
         controller = Controller.getInstance();
-        setAlignment(Pos.CENTER_LEFT);
+        setAlignment(Pos.CENTER);
         this.setPadding(new Insets(20));
         this.setHgap(20);
         this.setVgap(10);

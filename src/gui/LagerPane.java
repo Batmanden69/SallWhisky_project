@@ -18,6 +18,7 @@ public class LagerPane extends GridPane {
 
     public LagerPane() {
         controller = Controller.getInstance();
+        setAlignment(Pos.CENTER);
         Label titleLabel = new Label("Lager");
         titleLabel.setFont(new Font("Arial", 20));
         add(titleLabel, 0, 0, 2, 1);
