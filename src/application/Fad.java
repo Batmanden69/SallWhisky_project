@@ -22,12 +22,16 @@ public class Fad {
         count++;
     }
 
-    // Try-Catch setup.
+
     public void fyldPå(double mængde) {
             double ledigPladsFør = størrelse - antalLiterPåfyldt;
-            if (this.antalLiterPåfyldt + mængde > this.størrelse) {
-                throw new RuntimeException("Der er ikke plads til den valgte mængde. fadet hat kun "+ ledigPladsFør + " liter plads ledig");
-            } else {
+            if (mængde <0) {
+                throw new RuntimeException("Mængden skal være større end 0");
+            }
+            else if (this.antalLiterPåfyldt + mængde > this.størrelse) {
+                throw new RuntimeException("Der er ikke plads til den valgte mængde. Fadet har kun "+ ledigPladsFør + " liter plads ledig");
+            }
+            else {
                 this.antalLiterPåfyldt += mængde;
             }
     }
