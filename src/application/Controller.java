@@ -84,15 +84,15 @@ public class Controller {
         this.createPlads(1, 3, Storage.getInstance().getLagerList().get(0));
         this.createPlads(1, 4, Storage.getInstance().getLagerList().get(0));
 
-//        Fad fad1 = this.createFad(100, "Fad1", "Leverandør1");
-//        Fad fad2 = this.createFad(50, "Fad2", "Leverandør2");
-//        Fad fad3 = this.createFad(25, "Fad3", "Leverandør3");
-//        Fad fad4 = this.createFad(75, "Fad4", "Leverandør4");
+        Fad fad1 = this.createFad(100, "Fad1", "Leverandør1");
+        Fad fad2 = this.createFad(50, "Fad2", "Leverandør2");
+        Fad fad3 = this.createFad(25, "Fad3", "Leverandør3");
+        Fad fad4 = this.createFad(75, "Fad4", "Leverandør4");
 
-//        Storage.getInstance().getFadList().get(0).lægPåPlads(Storage.getInstance().getLagerList().get(0));
-//        Storage.getInstance().getFadList().get(1).lægPåPlads(Storage.getInstance().getLagerList().get(0));
-//        Storage.getInstance().getFadList().get(2).lægPåPlads(Storage.getInstance().getLagerList().get(0));
-//        Storage.getInstance().getFadList().get(3).lægPåPlads(Storage.getInstance().getLagerList().get(0));
+        Storage.getInstance().getFadList().get(0).lægPåPlads(Storage.getInstance().getLagerList().get(0));
+        Storage.getInstance().getFadList().get(1).lægPåPlads(Storage.getInstance().getLagerList().get(0));
+        Storage.getInstance().getFadList().get(2).lægPåPlads(Storage.getInstance().getLagerList().get(0));
+        Storage.getInstance().getFadList().get(3).lægPåPlads(Storage.getInstance().getLagerList().get(0));
 
         Destillering destillering1 = this.createDestillering(1000, 1, "Kornsort1", 40, null, null);
         Destillering destillering2 = this.createDestillering(1000, 2, "Kornsort2", 40, null, null);
@@ -100,11 +100,11 @@ public class Controller {
         Destillat destillat1 = this.createDestillat(20, destillering1);
         Destillat destillat2 = this.createDestillat(5, destillering2);
 
-//        destillering2.hældPåFad2(fad1, 10);
-//        destillering1.hældPåFad2(fad2,20);
+        destillering2.hældPåFad2(fad1, 10);
+        destillering1.hældPåFad2(fad2,20);
 
-//        Whisky whisky1 = createWhisky(2,300);
-//        whisky1.addDestillat(destillat1);
+        Whisky whisky1 = createWhisky(2,300);
+        whisky1.addDestillat(destillat1);
 
     }
     public void init() {
