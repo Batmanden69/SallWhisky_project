@@ -99,6 +99,8 @@ public class Controller {
 
         Destillat destillat1 = this.createDestillat(20, destillering1);
         Destillat destillat2 = this.createDestillat(5, destillering2);
+        destillat1.hældPåFad(fad4,5);
+        destillat2.hældPåFad(fad3,20);
 
         destillering2.hældPåFad2(fad1, 10);
         destillering1.hældPåFad2(fad2,20);
