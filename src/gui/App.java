@@ -11,6 +11,4 @@ public class App {
         Application.launch(StartWindow.class);
     }
 }
-/*
-vnds
-*/
+

@@ -87,6 +87,8 @@ public class FadPane extends GridPane {
 
     }
 
+
+
     public void updateControls() {
         // TODO Auto-generated method stub
     }

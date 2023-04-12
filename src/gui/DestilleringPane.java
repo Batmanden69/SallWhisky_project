@@ -2,6 +2,7 @@ package gui;
 
 import application.Controller;
 import application.Destillering;
+import application.Fad;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -114,11 +115,20 @@ public class DestilleringPane extends GridPane {
         Label lblMængde = new Label("Mængde: ");
         TextField txfMængde = new TextField();
 
+        Button hældBtn = new Button("Hæld på fad");
+        hældBtn.setOnAction(event -> {
+            Fad selectedFad = (Fad) fade.getSelectionModel().getSelectedItem();
+            Destillering destillering = (Destillering) lvwDestilleringer.getSelectionModel().getSelectedItem();
+            destillering.hældPåFad2(selectedFad, Double.parseDouble(txfMængde.getText()));
+            updateDestilleringListview();
+        });
+
         GridPane inputGrid = new GridPane();
         inputGrid.add(fade, 0, 1);
         inputGrid.add(lblfade, 0, 0);
         inputGrid.add(lblMængde, 0, 2);
         inputGrid.add(txfMængde, 1, 2);
+        inputGrid.add(hældBtn, 2, 3);
 
 
         Dialog<Void> dialog = new Dialog<>();
