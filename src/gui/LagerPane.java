@@ -69,7 +69,7 @@ public class LagerPane extends GridPane {
                 if (navn.isBlank() || pladserString.isBlank()) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Manglende information");
-                    alert.setContentText("Du mangler at angive navn eller antal pladser");
+                    alert.setContentText("Du mangler at angive navn");
                     alert.showAndWait();
                 } else {
                     Lager lager = Controller.getInstance().createLager(navn, pladser);

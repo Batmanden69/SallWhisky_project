@@ -68,22 +68,49 @@ public class FadPane extends GridPane {
 
 
     public void opretFadKnap() {
-        double størrelse = Integer.parseInt(størrelseField.getText());
-        String fadType = fadTypeField.getText();
-        String leverandør = leverandørField.getText();
-        Lager lager = (Lager) lagerCombo.getSelectionModel().getSelectedItem();
+        try {
+            double størrelse = Double.parseDouble(størrelseField.getText());
+            String fadType = fadTypeField.getText();
+            String leverandør = leverandørField.getText();
+            Lager lager = (Lager) lagerCombo.getSelectionModel().getSelectedItem();
 
-        Fad fad = Controller.getInstance().createFad(størrelse, fadType, leverandør);
+            if (størrelse <= 0 || fadType.isBlank() || leverandør.isBlank() || lager == null) {
+                throw new IllegalArgumentException("Udfyld venligst alle felter korrekt.");
+            }
 
+            Fad fad = Controller.getInstance().createFad(størrelse, fadType, leverandør);
 
-        fad.lægPåPlads(lager);
+            fad.lægPåPlads(lager);
 
-        størrelseField.setText("");
-        fadTypeField.setText("");
-        leverandørField.setText("");
-        lagerCombo.getSelectionModel().clearSelection();
+            størrelseField.setText("");
+            fadTypeField.setText("");
+            leverandørField.setText("");
+            lagerCombo.getSelectionModel().clearSelection();
 
+        } catch (NumberFormatException e) {
+            // Håndter ugyldig størrelse input
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fejl");
+            alert.setHeaderText(null);
+            alert.setContentText("Indtast venligst et gyldigt tal for størrelse.");
+            alert.showAndWait();
+        } catch (IllegalArgumentException e) {
+            // Håndter ugyldig eller manglende input
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fejl");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        } catch (Exception e) {
+            // Håndter andre ukendte fejl
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fejl");
+            alert.setHeaderText(null);
+            alert.setContentText("Der opstod en fejl: " + e.getMessage());
+            alert.showAndWait();
+        }
     }
+
 
     public void updateCombobox() {
         lagerCombo.getItems().setAll(Controller.getInstance().getLagerList());
