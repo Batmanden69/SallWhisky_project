@@ -24,9 +24,7 @@ public class LagerPane extends GridPane {
         add(titleLabel, 0, 0, 2, 1);
 
         lvwLager = new ListView<>();
-
         this.add(lvwLager, 0, 1);
-
         lvwLager.getItems().setAll(controller.getLagerList());
 
         Button btnOpret = new Button("Opret lager");
@@ -88,10 +86,9 @@ public class LagerPane extends GridPane {
 
 
     private void sletLager() {
-        int selectedIndex = lvwLager.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
-            lvwLager.getItems().remove(selectedIndex);
-        }
+        Lager selectedLager = lvwLager.getSelectionModel().getSelectedItem();
+        lvwLager.getItems().remove(selectedLager);
+        controller.getLagerList().remove(selectedLager);
     }
 
     public void updateControls() {
