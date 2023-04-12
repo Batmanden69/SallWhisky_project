@@ -2,6 +2,7 @@ package gui;
 
 import application.Controller;
 import application.Destillat;
+import application.Lagring;
 import application.Whisky;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
@@ -13,6 +14,7 @@ import javafx.scene.text.Font;
 public class WhiskyPane extends GridPane {
     private ListView<Whisky> lvwWhisky;
     private ListView<Destillat> lvwDestillat;
+    private ListView<Lagring> lvwLagring;
     private Button sletWhiskyButton;
     private Controller controller;
 
@@ -30,22 +32,31 @@ public class WhiskyPane extends GridPane {
         add(titleLabel, 0, 0, 2, 1);
 
         lvwWhisky = new ListView<>();
-        add(lvwWhisky, 0, 1, 1, 3);
+        add(lvwWhisky, 0, 1);
         lvwWhisky.getItems().setAll(controller.getWhiskyList());
 
         ChangeListener<Whisky> listener = (ov, oldWhisky, newWhisky) -> this.selectedwhiskyChanged();
         lvwWhisky.getSelectionModel().selectedItemProperty().addListener(listener);
 
-        Label titleHistorik = new Label("Historik");
+        Label titleHistorik = new Label("Destillater");
         titleHistorik.setFont(new Font("Arial", 20));
         add(titleHistorik, 1, 0, 2, 1);
 
         lvwDestillat = new ListView<>();
-        add(lvwDestillat, 1, 1, 1, 2);
+        add(lvwDestillat, 1, 1);
 
+        ChangeListener<Destillat> listener2 = (ov, oldDestillat, newDestillat) -> this.selectedDestillatChanged();
+        lvwDestillat.getSelectionModel().selectedItemProperty().addListener(listener2);
+
+        Label lblLagringshistorik = new Label("Lagrings historik");
+        lblLagringshistorik.setFont(new Font("Arial", 20));
+        add(lblLagringshistorik,2,0,2,1);
+
+        lvwLagring = new ListView<>();
+        add(lvwLagring,3,1);
 
         sletWhiskyButton = new Button("Slet whisky");
-        add(sletWhiskyButton, 1, 3);
+        add(sletWhiskyButton, 0, 2);
         sletWhiskyButton.setOnAction(event -> sletwhiskyKnap());
     }
 
@@ -62,6 +73,9 @@ public class WhiskyPane extends GridPane {
     private void selectedwhiskyChanged() {
         this.updateControls();
     }
+    private void selectedDestillatChanged(){
+        this.updateControls();
+    }
 
     public void updateControls() {
 
@@ -72,6 +86,11 @@ public class WhiskyPane extends GridPane {
             lvwDestillat.getItems().setAll(whisky.getDestillatList());
         } else {
             lvwDestillat.getItems().clear();
+        }
+        if (destillat != null && destillat.getDestillatHistorik() != null){
+            lvwLagring.getItems().setAll(whisky.lagringHistorik());
+        } else {
+            lvwLagring.getItems().clear();
         }
     }
 }
