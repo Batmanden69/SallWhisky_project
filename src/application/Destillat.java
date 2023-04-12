@@ -89,10 +89,16 @@ public class Destillat {
         return oversigt;
     }
     public void hældPåFad(Fad fad, int mængde) {
+        if (mængde > this.mængde) {
+            throw new IllegalArgumentException("Den indtastede mængde overskrider mængden af destillat.");
+        }
+        if(mængde <=0){
+            throw new IllegalArgumentException("Den indtastede mængde skal være større end 0.");
+        }
         Lagring lagring = new Lagring(fad, this);
-        fad.setAntalLiterPåfyldt(mængde);
         fad.addLagring(lagring);
         this.addLagring(lagring);
+        fad.fyldPå(mængde);
     }
 
     @Override
