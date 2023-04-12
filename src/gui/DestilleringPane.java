@@ -131,17 +131,11 @@ public class DestilleringPane extends GridPane {
                 alert.setContentText("Du mangler at vælge et fad");
                 alert.showAndWait();
             } else {
-                try {
-                    destillering.hældPåFad2(selectedFad, Double.parseDouble(txfMængde.getText()));
-                } catch (RuntimeException e) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Fejl: Fadets kapacitet er overskredet");
-                    alert.setContentText("Fadet har ikke nok plads til at rumme så meget væske. Vælg venligst en mindre mængde.");
-                    alert.showAndWait();
-                }
+                destillering.hældPåFad2(selectedFad, Double.parseDouble(txfMængde.getText()));
                 updateDestilleringListview();
                 txfMængde.setText("");
             }
+
         });
 
         GridPane inputGrid = new GridPane();
@@ -153,8 +147,14 @@ public class DestilleringPane extends GridPane {
 
 
         Dialog<Void> dialog = new Dialog<>();
-        dialog.getDialogPane().setContent(inputGrid);
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
+        dialog.getDialogPane().
+
+                setContent(inputGrid);
+        dialog.getDialogPane().
+
+                getButtonTypes().
+
+                addAll(ButtonType.CANCEL);
         dialog.showAndWait();
 
     }

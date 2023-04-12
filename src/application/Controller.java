@@ -77,12 +77,12 @@ public class Controller {
 
 
     public void initStorage() {
-        this.createLager("Lager1", 10);
-
-        this.createPlads(1, 1, Storage.getInstance().getLagerList().get(0));
-        this.createPlads(1, 2, Storage.getInstance().getLagerList().get(0));
-        this.createPlads(1, 3, Storage.getInstance().getLagerList().get(0));
-        this.createPlads(1, 4, Storage.getInstance().getLagerList().get(0));
+//        this.createLager("Lager1", 10);
+//
+//        this.createPlads(1, 1, Storage.getInstance().getLagerList().get(0));
+//        this.createPlads(1, 2, Storage.getInstance().getLagerList().get(0));
+//        this.createPlads(1, 3, Storage.getInstance().getLagerList().get(0));
+//        this.createPlads(1, 4, Storage.getInstance().getLagerList().get(0));
 
 //        Fad fad1 = this.createFad(100, "Fad1", "Leverandør1");
 //        Fad fad2 = this.createFad(50, "Fad2", "Leverandør2");
@@ -94,8 +94,8 @@ public class Controller {
 //        Storage.getInstance().getFadList().get(2).lægPåPlads(Storage.getInstance().getLagerList().get(0));
 //        Storage.getInstance().getFadList().get(3).lægPåPlads(Storage.getInstance().getLagerList().get(0));
 
-        Destillering destillering1 = this.createDestillering(1000, 1, "Kornsort1", 40, null, null);
-        Destillering destillering2 = this.createDestillering(1000, 2, "Kornsort2", 40, null, null);
+//        Destillering destillering1 = this.createDestillering(1000, 1, "Kornsort1", 40, null, null);
+//        Destillering destillering2 = this.createDestillering(1000, 2, "Kornsort2", 40, null, null);
 
 //        Destillat destillat1 = this.createDestillat(20, destillering1);
 //        Destillat destillat2 = this.createDestillat(5, destillering2);
