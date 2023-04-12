@@ -52,7 +52,7 @@ public class StartWindow extends Application {
         LagerPane lagerPane = new LagerPane();
         tabLager.setContent(lagerPane);
         tabLager.setOnSelectionChanged(event -> lagerPane.updateControls());
-        tabLager.setOnSelectionChanged(event -> lagerPane.updateControls());
+        tabLager.setOnSelectionChanged(event -> fadPane.updateCombobox());
 
 
         Tab tabDestillering = new Tab("Destillering");
