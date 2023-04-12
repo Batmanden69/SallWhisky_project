@@ -13,10 +13,11 @@ import java.util.ArrayList;
 
 public class LagerPane extends GridPane {
 
-    private ListView<String> lvwLager;
+    private ListView<Lager> lvwLager;
+    private Controller controller;
 
     public LagerPane() {
-
+        controller = Controller.getInstance();
         Label titleLabel = new Label("Lager");
         titleLabel.setFont(new Font("Arial", 20));
         add(titleLabel, 0, 0, 2, 1);
@@ -24,6 +25,8 @@ public class LagerPane extends GridPane {
         lvwLager = new ListView<>();
 
         this.add(lvwLager, 0, 1);
+
+        lvwLager.getItems().setAll(controller.getLagerList());
 
         Button btnOpret = new Button("Opret lager");
         btnOpret.setOnAction(e -> {
@@ -64,7 +67,7 @@ public class LagerPane extends GridPane {
             int pladser = Integer.parseInt(txtPladser.getText());
             if (!navn.isEmpty()) {
                 Lager lager = Controller.getInstance().createLager(navn, pladser);
-                lvwLager.getItems().add(String.valueOf(lager));
+                lvwLager.getItems().add(lager);
             }
         });
 
