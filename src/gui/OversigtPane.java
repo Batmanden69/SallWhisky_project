@@ -5,6 +5,7 @@ import application.Destillat;
 import application.Fad;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
@@ -31,6 +32,7 @@ public class OversigtPane extends GridPane {
 
     public OversigtPane() {
         controller = Controller.getInstance();
+        setAlignment(Pos.CENTER);
         this.setPadding(new Insets(20));
         this.setHgap(20);
         this.setVgap(20);

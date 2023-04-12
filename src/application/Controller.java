@@ -105,7 +105,6 @@ public class Controller {
 
         Whisky whisky1 = createWhisky(2,300);
         whisky1.addDestillat(destillat1);
-        System.out.println(whisky1.getDestillatList());
 
     }
     public void init() {

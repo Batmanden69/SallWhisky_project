@@ -80,7 +80,6 @@ public class DestilleringPane extends GridPane {
 
         btnHældPåFad.setOnAction(event -> hældPåFadAction());
 
-
     }
 
     //--------------------------------------
@@ -104,8 +103,6 @@ public class DestilleringPane extends GridPane {
         txfAlkoholProcent.setText("");
         txfRygematriale.setText("");
         txfKommentar.setText("");
-
-
     }
 
     private void hældPåFadAction() {
