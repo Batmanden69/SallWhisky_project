@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 
 public class FadPane extends GridPane {
 
-    private TextField størrelseField, fadTypeField, leverandørField, reolNrField, hyldeNrField;
+    private TextField idField, størrelseField, fadTypeField, leverandørField, reolNrField, hyldeNrField;
     private ComboBox lagerCombo;
     private Button opretButton;
 
@@ -29,10 +29,10 @@ public class FadPane extends GridPane {
         titleLabel.setFont(new Font("Arial", 20));
         add(titleLabel, 0, 0, 2, 1);
 
-//        Label idLabel = new Label("ID:");
-//        add(idLabel, 0, 1);
-//        idField = new TextField();
-//        add(idField, 1, 1);
+        Label idLabel = new Label("ID:");
+        add(idLabel, 0, 1);
+        idField = new TextField();
+        add(idField, 1, 1);
 
         Label størrelseLabel = new Label("Størrelse:");
         add(størrelseLabel, 0, 2);
@@ -68,7 +68,7 @@ public class FadPane extends GridPane {
 
 
     public void opretFadKnap() {
-        //int id = Integer.parseInt(idField.getText());
+        int id = Integer.parseInt(idField.getText());
         double størrelse = Integer.parseInt(størrelseField.getText());
         String fadType = fadTypeField.getText();
         String leverandør = leverandørField.getText();
@@ -79,7 +79,7 @@ public class FadPane extends GridPane {
 
         fad.lægPåPlads(lager);
 
-//        idField.setText("");
+        idField.setText("");
         størrelseField.setText("");
         fadTypeField.setText("");
         leverandørField.setText("");

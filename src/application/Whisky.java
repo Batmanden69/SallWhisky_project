@@ -28,7 +28,7 @@ public class Whisky {
     public void addDestillat(Destillat destillat) {
         if (!destillatList.contains(destillat)) {
             destillatList.add(destillat);
-            destillat.getDestillatHistorik().get(destillat.getDestillatHistorik().size()-1).setSlutDato(LocalDate.now());
+//            destillat.getDestillatHistorik().get(destillat.getDestillatHistorik().size()-1).setSlutDato(LocalDate.now());
         }
     }
 
@@ -66,10 +66,8 @@ public class Whisky {
 
     @Override
     public String toString() {
-        return "Whisky{" +
-                "batchId=" + batchId +
-                ", mængde=" + antalLiter +
-                ", destillatList=" + destillatList +
-                '}';
+        return  "BatchId=" + batchId +
+                "\nMængde=" + antalLiter +
+                "\n-----------------------------------";
     }
 }

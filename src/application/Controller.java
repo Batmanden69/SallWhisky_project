@@ -103,11 +103,11 @@ public class Controller {
         destillering2.hældPåFad2(fad1, 10);
         destillering1.hældPåFad2(fad2,20);
 
-
-
+        Whisky whisky1 = createWhisky(2,300);
+        whisky1.addDestillat(destillat1);
+        System.out.println(whisky1.getDestillatList());
 
     }
-
     public void init() {
         initStorage();
     }
