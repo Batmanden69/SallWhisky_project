@@ -81,4 +81,5 @@ public class Lagring {
     public String toString() {
         return "Fad: " + fad + ",    " + destillat + ",    " + "Lagringsperiode: " + getLagringsperiode() + " dage";
     }
+
 }
