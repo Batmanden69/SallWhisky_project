@@ -97,8 +97,8 @@ public class Controller {
         Destillering destillering1 = this.createDestillering(1000, 1, "Kornsort1", 40, null, null);
         Destillering destillering2 = this.createDestillering(1000, 2, "Kornsort2", 40, null, null);
 
-//        Destillat destillat1 = this.createDestillat(20, destillering1);
-//        Destillat destillat2 = this.createDestillat(5, destillering2);
+        Destillat destillat1 = this.createDestillat(20, destillering1);
+        Destillat destillat2 = this.createDestillat(5, destillering2);
 
 //        destillering2.hældPåFad2(fad1, 10);
 //        destillering1.hældPåFad2(fad2,20);
