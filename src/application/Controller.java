@@ -97,7 +97,6 @@ public class Controller {
         return false;
     }
 
-
     public void initStorage() {
         this.createLager("Lager1", 10);
 

@@ -34,7 +34,6 @@ public class Fad {
         }
     }
 
-    //Try-Catch setup igen.
     public void hældFra(double mængde) {
         if (antalLiterPåfyldt - mængde < 0) {
             throw new RuntimeException("Der er kun " + antalLiterPåfyldt + " liter væske påfyldt");
@@ -62,7 +61,7 @@ public class Fad {
     public ArrayList<Destillat> getDestillater() {
         ArrayList<Destillat> results = new ArrayList<>();
         if (antalLiterLedig() == størrelse)
-            return null;
+            return results;
         else {
             for (Lagring lagring : lagringList) {
                 results.add(lagring.getDestillat());
@@ -156,15 +155,6 @@ public class Fad {
     }
 
 
-    public int totalLagringsperiode() {
-        ArrayList<Destillat> destillatList = getDestillater();
-        for (Destillat d : destillatList) {
-            d.getDestillatHistorik(
-
-        }
-    }
-
-
     public double antalLiterLedig() {
         return størrelse - antalLiterPåfyldt;
     }
@@ -172,8 +162,7 @@ public class Fad {
     @Override
     public String toString() {
         return "FadID: " + id + "   " + "" +
-                "\nStr: " + størrelse + " L" + "  " +
-                "Total lagringsperiode: ";
+                "\nStr: " + størrelse + " L";
     }
 
     public void tømFad() {

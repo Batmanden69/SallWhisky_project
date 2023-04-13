@@ -15,7 +15,7 @@ class LagringTest {
 
     @Test
     void getLagringsperiodeTC1(){
-//Arrange
+        //Arrange
         Fad fad1 = new Fad(100, "Eg", "Frankrig");
         Destillering destillering1 = new Destillering(1000, 1, "Byg", 45.5,"Tørv",null);
         Destillat destillat1 = new Destillat(100,destillering1);
@@ -25,7 +25,6 @@ class LagringTest {
         long result = lagring.getLagringsperiode();
         //Assert
         assertEquals(1,result);
-
     }
     @Test
     void getLagringsperiodeTC2() {
