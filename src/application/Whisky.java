@@ -66,8 +66,8 @@ public class Whisky {
 
     @Override
     public String toString() {
-        return  "BatchId=" + batchId +
-                "\nMængde=" + antalLiter +
+        return  "BatchId: " + batchId +
+                "\nMængde: " + antalLiter +
                 "\n-----------------------------------";
     }
 }
