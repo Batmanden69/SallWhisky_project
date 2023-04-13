@@ -156,13 +156,13 @@ public class Fad {
     }
 
 
-    public int totalLagringsperiode() {
-        ArrayList<Destillat> destillatList = getDestillater();
-        for (Destillat d : destillatList) {
-            d.getDestillatHistorik(
-
-        }
-    }
+//    public int totalLagringsperiode() {
+//        ArrayList<Destillat> destillatList = getDestillater();
+//        for (Destillat d : destillatList) {
+//            d.getDestillatHistorik(
+//
+//        }
+//    }
 
 
     public double antalLiterLedig() {
