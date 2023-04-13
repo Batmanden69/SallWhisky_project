@@ -8,9 +8,12 @@ public class Whisky {
     private double antalLiter;
     private ArrayList<Destillat> destillatList = new ArrayList<>();
 
-    public Whisky(int batchId, double mængde) {
-        this.batchId = batchId;
+    private static int count = 1;
+
+    public Whisky(double mængde) {
         this.antalLiter = mængde;
+        this.batchId = count;
+        count++;
     }
 
     public int getBatchId() {
@@ -65,6 +68,7 @@ public class Whisky {
         return lagringHistorik;
 
     }
+
     @Override
     public String toString() {
         return "BatchId:   " + batchId +
