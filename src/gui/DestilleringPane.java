@@ -120,6 +120,7 @@ public class DestilleringPane extends GridPane {
         fade.getItems().setAll(controller.getFadList());
         Label lblMængde = new Label("Mængde: ");
         TextField txfMængde = new TextField();
+        Dialog<Void> dialog = new Dialog<>();
 
         Button hældBtn = new Button("Hæld på fad");
         hældBtn.setOnAction(event -> {
@@ -131,9 +132,17 @@ public class DestilleringPane extends GridPane {
                 alert.setContentText("Du mangler at vælge et fad");
                 alert.showAndWait();
             } else {
-                destillering.hældPåFad2(selectedFad, Double.parseDouble(txfMængde.getText()));
-                updateDestilleringListview();
-                txfMængde.setText("");
+                try {
+                    destillering.hældPåFad2(selectedFad, Double.parseDouble(txfMængde.getText()));
+                    updateDestilleringListview();
+                    txfMængde.setText("");
+
+                    dialog.close();
+                } catch (RuntimeException e) {
+                    throw new RuntimeException(e.getMessage());
+                }
+
+
             }
 
         });
@@ -146,7 +155,6 @@ public class DestilleringPane extends GridPane {
         inputGrid.add(hældBtn, 2, 3);
 
 
-        Dialog<Void> dialog = new Dialog<>();
         dialog.getDialogPane().
 
                 setContent(inputGrid);

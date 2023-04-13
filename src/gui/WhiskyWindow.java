@@ -1,16 +1,11 @@
 package gui;
 
-import application.Controller;
-import application.Destillat;
-import application.Fad;
-import application.Lagring;
+import application.*;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -67,8 +62,8 @@ public class WhiskyWindow extends Stage {
         opretWhiskyBtn = new Button("Opret whisky");
         pane.add(opretWhiskyBtn, 2, 1);
 
+        opretWhiskyBtn.setOnAction(event -> opretWhiskyAction());
 
-        updateFadList();
     }
 
     //---------------------------------------------------------------------
@@ -83,18 +78,61 @@ public class WhiskyWindow extends Stage {
 
     }
 
+    private void opretWhiskyAction() {
+        TextField txfBatchId = new TextField();
+//        TextField txfMængde = new TextField();
+        Label lblBatch = new Label("Batch Id: ");
+//        Label lblMængde = new Label("Mængde: ");
+        Dialog<Void> dialog = new Dialog<>();
 
-    private ArrayList<Fad> klarFad() {
-        ArrayList<Fad> fads = new ArrayList<>();
-        Fad fad = lvwFad.getSelectionModel().getSelectedItem();
-        for (Destillat d : fad.getDestillater()) {
-            Lagring l = d.getDestillatHistorik().get(0);
-            if (l.getLagringsperiode() >= 1095) {
-                fads.add(fad);
+        GridPane inputGrid = new GridPane();
+        inputGrid.add(lblBatch, 0, 0);
+        inputGrid.add(txfBatchId, 1, 0);
+//        inputGrid.add(lblMængde, 0, 1);
+//        inputGrid.add(txfMængde, 1, 1);
+
+        Button BtnTilføj = new Button("Tilføj");
+        BtnTilføj.setOnAction(event -> {
+            Fad selectedFad = lvwFad.getSelectionModel().getSelectedItem();
+            String batchId = txfBatchId.getText();
+//            String mængde = txfMængde.getText();
+            if (batchId.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Manglende input");
+                alert.setContentText("Du mangler at angive vigtig input");
+                alert.showAndWait();
+            } else {
+                int batchId2 = Integer.parseInt(batchId);
+                double mængde = selectedFad.samletMængde();
+                Whisky whisky = controller.createWhisky(batchId2, mængde);
+                for (Destillat d : selectedFad.getDestillater()) {
+                    whisky.addDestillat(d);
+                }
+
+                selectedFad.tømFad();
+
+                txfBatchId.setText("");
+//                txfMængde.setText("");
+                updateControls();
+
+                dialog.close();
             }
-        }
-        return fads;
+
+        });
+
+        GridPane buttonGrid = new GridPane();
+        buttonGrid.add(BtnTilføj, 0, 0);
+
+        GridPane dialogGrid = new GridPane();
+        dialogGrid.add(inputGrid, 0, 0);
+        dialogGrid.add(buttonGrid, 1, 1);
+
+        dialog.getDialogPane().setContent(dialogGrid);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
+        dialog.showAndWait();
+
     }
+
 
     private void updateControls() {
         Fad fad = (Fad) lvwFad.getSelectionModel().getSelectedItem();

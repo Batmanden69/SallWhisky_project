@@ -88,18 +88,22 @@ public class OversigtPane extends GridPane {
         ListView nyeFade = new ListView<>();
         nyeFade.getItems().addAll(controller.getFadList());
         Fad firstSelectedFad = (Fad) lvwFade.getSelectionModel().getSelectedItem();
+        Dialog<Void> dialog = new Dialog<>();
 
 
         Button vælgBtn = new Button("Vælg");
         vælgBtn.setOnAction(event -> {
                     Fad selectedFad = (Fad) nyeFade.getSelectionModel().getSelectedItem();
-                    try {
+                    if (firstSelectedFad == null) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Fejl");
+                        alert.setContentText("Du mangler at vælge et fad du vil omhælde til");
+                        alert.showAndWait();
+                    } else {
                         firstSelectedFad.omhældFad2(selectedFad);
-                    } catch (RuntimeException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage());
-                        //   throw new RuntimeException(e.getMessage());
+                        dialog.close();
+                        updateControls();
                     }
-
                 }
         );
 
@@ -109,7 +113,6 @@ public class OversigtPane extends GridPane {
         inputGrid.add(vælgBtn, 3, 2);
 
 
-        Dialog<Void> dialog = new Dialog<>();
         dialog.getDialogPane().setContent(inputGrid);
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
         dialog.showAndWait();

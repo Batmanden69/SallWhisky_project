@@ -71,16 +71,15 @@ public class Destillering {
     }
 
     /**
-     * @param fad
-     * pre: antalLiterTilbage >0.
-     * post: antalLiterTilbage er reduceret med destillatets størrelse.
-     *       der oprettes et lagringsobjekt, der forbindes til fadet og destillatet.
+     * @param fad pre: antalLiterTilbage >0.
+     *            post: antalLiterTilbage er reduceret med destillatets størrelse.
+     *            der oprettes et lagringsobjekt, der forbindes til fadet og destillatet.
      */
     public void hældPåFad2(Fad fad, double mængde) {
+        fad.fyldPå(mængde);
         Destillat destillat = createDestillat(mængde);
         Lagring lagring = fad.createLagring(fad, destillat);
         destillat.addLagring(lagring);
-        fad.fyldPå(mængde);
 
     }
 

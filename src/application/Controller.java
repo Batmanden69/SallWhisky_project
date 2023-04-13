@@ -4,7 +4,6 @@ import storage.Storage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Controller {
 
@@ -75,6 +74,29 @@ public class Controller {
         Storage.getInstance().addPlads(plads);
     }
 
+    public ArrayList<Fad> klarFad() {
+        ArrayList<Fad> fads = new ArrayList<>();
+        for (Fad f : getFadList()) {
+            if (erFadKlar(f)) {
+                fads.add(f);
+            }
+        }
+        return fads;
+    }
+
+    private boolean erFadKlar(Fad f) {
+        int totalLagringsperiode = 0;
+        for (Destillat d : f.getDestillater()) {
+            for (Lagring l : d.getDestillatHistorik()) {
+                totalLagringsperiode += l.getLagringsperiode();
+                if (totalLagringsperiode >= 1095) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     public void initStorage() {
         this.createLager("Lager1", 10);
@@ -100,13 +122,19 @@ public class Controller {
         Destillat destillat1 = this.createDestillat(20, destillering1);
         Destillat destillat2 = this.createDestillat(5, destillering2);
 
-        destillering2.hældPåFad2(fad1, 10);
-        destillering1.hældPåFad2(fad2,20);
 
-        Whisky whisky1 = createWhisky(2,300);
+        destillering2.hældPåFad2(fad1, 10);
+        destillering1.hældPåFad2(fad2, 20);
+
+        fad1.getDestillater().get(0).getDestillatHistorik().get(0).setSlutDato(LocalDate.of(2030, 1, 1));
+
+//        System.out.println(fad1.getLagringList());
+
+        Whisky whisky1 = createWhisky(2, 300);
         whisky1.addDestillat(destillat1);
 
     }
+
     public void init() {
         initStorage();
     }

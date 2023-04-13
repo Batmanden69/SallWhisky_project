@@ -53,6 +53,7 @@ public class LagerPane extends GridPane {
         TextField txfPladser = new TextField();
         Label lblNavn = new Label("Navn:");
         Label lblPladser = new Label("Antal pladser:");
+        Dialog<Void> dialog = new Dialog<>();
 
         GridPane inputGrid = new GridPane();
         inputGrid.add(lblNavn, 0, 0);
@@ -77,6 +78,8 @@ public class LagerPane extends GridPane {
 
                     txfNavn.setText("");
                     txfPladser.setText("");
+
+                    dialog.close();
                 }
             } catch (NumberFormatException ex) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -94,8 +97,6 @@ public class LagerPane extends GridPane {
         dialogGrid.add(inputGrid, 0, 0);
         dialogGrid.add(buttonGrid, 0, 1);
 
-        // Opret dialogen og vis den
-        Dialog<Void> dialog = new Dialog<>();
         dialog.getDialogPane().setContent(dialogGrid);
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
         dialog.showAndWait();

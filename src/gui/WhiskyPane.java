@@ -20,6 +20,8 @@ public class WhiskyPane extends GridPane {
     private Controller controller;
     private WhiskyWindow whiskyWindow;
 
+    private Button opdaterWhisky;
+
     public WhiskyPane() {
 
         controller = Controller.getInstance();
@@ -52,41 +54,53 @@ public class WhiskyPane extends GridPane {
 
         Label lblLagringshistorik = new Label("Lagrings historik");
         lblLagringshistorik.setFont(new Font("Arial", 20));
-        add(lblLagringshistorik,2,0,2,1);
+        add(lblLagringshistorik, 2, 0, 2, 1);
 
         lvwLagring = new ListView<>();
-        add(lvwLagring,2,1);
+        add(lvwLagring, 2, 1);
 
         sletWhiskyButton = new Button("Slet whisky");
         add(sletWhiskyButton, 0, 2);
         sletWhiskyButton.setOnAction(event -> sletWhiskyKnap());
 
         opretWhiskyButton = new Button("Opret Whisky");
-        add(opretWhiskyButton,2,2);
+        add(opretWhiskyButton, 2, 2);
         opretWhiskyButton.setOnAction(event -> opretWhiskyKnap());
+
+        opdaterWhisky = new Button("Opdatér whisky");
+        add(opdaterWhisky, 1, 2);
+
+        opdaterWhisky.setOnAction(event -> updateListviews());
+
     }
 
     //-------------------------------------#
     //Metoder
 
-    private void sletWhiskyKnap(){
+    private void sletWhiskyKnap() {
         int selectedIndex = lvwWhisky.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             lvwWhisky.getItems().remove(selectedIndex);
         }
     }
 
-    private void opretWhiskyKnap(){
+    private void opretWhiskyKnap() {
         WhiskyWindow window = new WhiskyWindow();
-        window.showAndWait();
         window.updateFadList();
+        window.showAndWait();
+
     }
 
     private void selectedWhiskyChanged() {
         this.updateControls();
     }
-    private void selectedDestillatChanged(){
+
+    private void selectedDestillatChanged() {
         this.updateControls();
+    }
+
+    private void updateListviews() {
+        lvwWhisky.getItems().setAll(controller.getWhiskyList());
     }
 
     public void updateControls() {
@@ -98,7 +112,7 @@ public class WhiskyPane extends GridPane {
         } else {
             lvwDestillat.getItems().clear();
         }
-        if (destillat != null && destillat.getDestillatHistorik() != null){
+        if (destillat != null && destillat.getDestillatHistorik() != null) {
             lvwLagring.getItems().setAll(whisky.lagringHistorik());
         } else {
             lvwLagring.getItems().clear();

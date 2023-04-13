@@ -15,6 +15,7 @@ public class Fad {
 
 
     public Fad(double størrelse, String fadType, String leverandør) {
+        this.antalLiterPåfyldt = 0;
         this.størrelse = størrelse;
         this.fadType = fadType;
         this.leverandør = leverandør;
@@ -24,25 +25,22 @@ public class Fad {
 
 
     public void fyldPå(double mængde) {
-            double ledigPladsFør = størrelse - antalLiterPåfyldt;
-            if (mængde < 0) {
-                throw new RuntimeException("Mængden skal være større end 0");
-            }
-            else if (this.antalLiterPåfyldt + mængde > this.størrelse) {
-                throw new RuntimeException("Fadet bliver overfyldt med "+ ledigPladsFør + " liter");
-            }
-            else {
-                this.antalLiterPåfyldt += mængde;
-            }
+        if (mængde < 0) {
+            throw new RuntimeException("Mængden skal være større end 0");
+        } else if (antalLiterPåfyldt + mængde > størrelse) {
+            throw new RuntimeException("Der er ikke plads til den ønskede mængde");
+        } else {
+            antalLiterPåfyldt += mængde;
+        }
     }
 
     //Try-Catch setup igen.
     public void hældFra(double mængde) {
-        if (this.antalLiterPåfyldt - mængde < 0) {
-            throw new RuntimeException("Der er kun " + antalLiterPåfyldt +" liter væske påfyldt");
+        if (antalLiterPåfyldt - mængde < 0) {
+            throw new RuntimeException("Der er kun " + antalLiterPåfyldt + " liter væske påfyldt");
         } else {
-            this.antalLiterPåfyldt -= mængde;
-            if (this.antalLiterPåfyldt == 0) {
+            antalLiterPåfyldt -= mængde;
+            if (antalLiterPåfyldt == 0) {
                 tømFad();
             }
         }
@@ -130,7 +128,7 @@ public class Fad {
     public void removeLagring(Lagring lagring) {
         if (lagringList.contains(lagring)) {
             lagringList.remove(lagring);
-            lagring.setFad(this);
+//            lagring.setFad(this);
         }
     }
 
@@ -158,13 +156,24 @@ public class Fad {
     }
 
 
+    public int totalLagringsperiode() {
+        ArrayList<Destillat> destillatList = getDestillater();
+        for (Destillat d : destillatList) {
+            d.getDestillatHistorik(
+
+        }
+    }
+
+
     public double antalLiterLedig() {
         return størrelse - antalLiterPåfyldt;
     }
 
     @Override
     public String toString() {
-        return "FadID: " + id + "   " + "Str: " + størrelse + " L";
+        return "FadID: " + id + "   " + "" +
+                "\nStr: " + størrelse + " L" + "  " +
+                "Total lagringsperiode: ";
     }
 
     public void tømFad() {
@@ -184,6 +193,14 @@ public class Fad {
             this.removeLagring(lagring);
             omhældFad2(nytFad);
         }
+    }
+
+    public double samletMængde() {
+        double sum = 0;
+        for (Destillat d : this.getDestillater()) {
+            sum += d.getMængde();
+        }
+        return sum;
     }
 
 

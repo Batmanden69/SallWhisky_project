@@ -48,6 +48,7 @@ public class Whisky {
         }
         return fadHistorik;
     }
+
     public ArrayList<Destillering> destilleringHistorik() {
         ArrayList<Destillering> destilleringHistorik = new ArrayList<>();
         for (Destillat d : getDestillatList()) {
@@ -62,12 +63,12 @@ public class Whisky {
             lagringHistorik.addAll(d.getDestillatHistorik());
         }
         return lagringHistorik;
-    }
 
+    }
     @Override
     public String toString() {
-        return  "BatchId=" + batchId +
-                "\nMængde=" + antalLiter +
+        return "BatchId:   " + batchId +
+                "\nMængde:  " + antalLiter + " liter" +
                 "\n-----------------------------------";
     }
 }
