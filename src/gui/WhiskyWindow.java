@@ -2,6 +2,7 @@ package gui;
 
 import application.*;
 import javafx.beans.value.ChangeListener;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -82,23 +83,46 @@ public class WhiskyWindow extends Stage {
     }
 
 
+//    private void opretWhiskyAction() {
+//        Fad selectedFad = lvwFad.getSelectionModel().getSelectedItem();
+//        if (selectedFad == null) {
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Mangler fad");
+//            alert.setContentText("Du mangler at vælger hvilke fade du vil danne whisky af");
+//            alert.showAndWait();
+//        } else {
+//            double mængde = selectedFad.samletMængde();
+//            Whisky whisky = controller.createWhisky(mængde);
+//            for (Destillat d : selectedFad.getDestillater()) {
+//                whisky.addDestillat(d);
+//            }
+//            selectedFad.tømFad();
+//            updateControls();
+//        }
+//    }
     private void opretWhiskyAction() {
-        Fad selectedFad = lvwFad.getSelectionModel().getSelectedItem();
-        if (selectedFad == null) {
+        ObservableList<Fad> selectedFade = lvwFad.getSelectionModel().getSelectedItems();
+        if (selectedFade.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Mangler fad");
-            alert.setContentText("Du mangler at vælger hvilke fade du vil danne whisky af");
+            alert.setTitle("Mangler fade");
+            alert.setContentText("Du mangler at vælge, hvilke fade du vil danne whisky af");
             alert.showAndWait();
         } else {
-            double mængde = selectedFad.samletMængde();
-            Whisky whisky = controller.createWhisky(mængde);
-            for (Destillat d : selectedFad.getDestillater()) {
-                whisky.addDestillat(d);
+            double totalMængde = 0;
+            for (Fad f : selectedFade) {
+                totalMængde += f.samletMængde();
             }
-            selectedFad.tømFad();
+            Whisky whisky = controller.createWhisky(totalMængde);
+            for (Fad f : selectedFade) {
+                for (Destillat d : f.getDestillater()) {
+                    whisky.addDestillat(d);
+                }
+                f.tømFad();
+            }
             updateControls();
         }
     }
+
 
 
     private void updateControls() {

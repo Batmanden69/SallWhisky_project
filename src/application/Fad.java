@@ -168,6 +168,7 @@ public class Fad {
     public void tømFad() {
         tømt = true;
         antalLiterPåfyldt = 0;
+        this.getNuværendeIndhold().clear();
     }
 
     public void omhældFad2(Fad nytFad) {
