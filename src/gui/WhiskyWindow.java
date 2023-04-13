@@ -79,62 +79,25 @@ public class WhiskyWindow extends Stage {
 
     private void selectedFadChanged() {
         this.updateControls();
-
     }
 
+
     private void opretWhiskyAction() {
-        TextField txfBatchId = new TextField();
-//        TextField txfMængde = new TextField();
-        Label lblBatch = new Label("Batch Id: ");
-//        Label lblMængde = new Label("Mængde: ");
-        Dialog<Void> dialog = new Dialog<>();
-
-        GridPane inputGrid = new GridPane();
-        inputGrid.add(lblBatch, 0, 0);
-        inputGrid.add(txfBatchId, 1, 0);
-//        inputGrid.add(lblMængde, 0, 1);
-//        inputGrid.add(txfMængde, 1, 1);
-
-        Button BtnTilføj = new Button("Tilføj");
-        BtnTilføj.setOnAction(event -> {
-            Fad selectedFad = lvwFad.getSelectionModel().getSelectedItem();
-            String batchId = txfBatchId.getText();
-//            String mængde = txfMængde.getText();
-            if (batchId.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Manglende input");
-                alert.setContentText("Du mangler at angive vigtig input");
-                alert.showAndWait();
-            } else {
-                int batchId2 = Integer.parseInt(batchId);
-                double mængde = selectedFad.samletMængde();
-                Whisky whisky = controller.createWhisky(batchId2, mængde);
-                for (Destillat d : selectedFad.getDestillater()) {
-                    whisky.addDestillat(d);
-                }
-
-                selectedFad.tømFad();
-
-                txfBatchId.setText("");
-//                txfMængde.setText("");
-                updateControls();
-
-                dialog.close();
+        Fad selectedFad = lvwFad.getSelectionModel().getSelectedItem();
+        if (selectedFad == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Mangler fad");
+            alert.setContentText("Du mangler at vælger hvilke fade du vil danne whisky af");
+            alert.showAndWait();
+        } else {
+            double mængde = selectedFad.samletMængde();
+            Whisky whisky = controller.createWhisky(mængde);
+            for (Destillat d : selectedFad.getDestillater()) {
+                whisky.addDestillat(d);
             }
-
-        });
-
-        GridPane buttonGrid = new GridPane();
-        buttonGrid.add(BtnTilføj, 0, 0);
-
-        GridPane dialogGrid = new GridPane();
-        dialogGrid.add(inputGrid, 0, 0);
-        dialogGrid.add(buttonGrid, 1, 1);
-
-        dialog.getDialogPane().setContent(dialogGrid);
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
-        dialog.showAndWait();
-
+            selectedFad.tømFad();
+            updateControls();
+        }
     }
 
 
