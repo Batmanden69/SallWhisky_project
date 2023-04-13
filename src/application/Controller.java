@@ -1,5 +1,6 @@
 package application;
 
+import javafx.collections.ObservableList;
 import storage.Storage;
 
 import java.time.LocalDate;
@@ -97,6 +98,23 @@ public class Controller {
         return false;
     }
 
+    public void whiskeyAction(ObservableList<Fad> selectedFade) {
+        double totalMængde = 0;
+        for (Fad f : selectedFade) {
+            totalMængde += f.samletMængde();
+        }
+        Whisky whisky = createWhisky(totalMængde);
+        for (Fad f : selectedFade) {
+            for (Destillat d : f.getDestillater()) {
+                whisky.addDestillat(d);
+            }
+            if (this.getFadList().contains(f)) {
+                this.getFadList().get(this.getFadList().indexOf(f)).tømFad();
+            }
+        }
+    }
+
+
     public void initStorage() {
         this.createLager("Lager1", 10);
 
@@ -124,6 +142,7 @@ public class Controller {
 
         destillering2.hældPåFad2(fad1, 10);
         destillering1.hældPåFad2(fad2, 20);
+        destillering1.hældPåFad2(fad3, 10);
 
         fad1.getDestillater().get(0).getDestillatHistorik().get(0).setSlutDato(LocalDate.of(2030, 1, 1));
         fad2.getDestillater().get(0).getDestillatHistorik().get(0).setSlutDato(LocalDate.of(2030, 1, 1));

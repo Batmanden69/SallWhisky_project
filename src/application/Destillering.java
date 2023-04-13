@@ -12,7 +12,6 @@ public class Destillering {
     private double alkoholProcent;
     private String rygemateriale;
     private String kommentar;
-    private String medarbejder;
     private static int count = 1;
 
     private final ArrayList<Destillat> destillatList = new ArrayList<>();

@@ -9,7 +9,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -70,10 +69,6 @@ public class OversigtPane extends GridPane {
 
     private void selectedDestillatChanged() {
         this.updateControls();
-    }
-
-    public ListView getLvwFade() {
-        return lvwFade;
     }
 
     private void selectedFadChanged() {

@@ -13,8 +13,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.util.ArrayList;
-
 public class WhiskyWindow extends Stage {
 
     public WhiskyWindow() {
@@ -27,11 +25,10 @@ public class WhiskyWindow extends Stage {
 
         Scene scene = new Scene(pane);
         this.setScene(scene);
-
     }
 
     private ListView<Fad> lvwFad;
-    private ListView<Destillat> lvwDestillat;
+
     private TextArea txaDestillat;
     private Controller controller;
 
@@ -72,34 +69,12 @@ public class WhiskyWindow extends Stage {
     }
 
     //---------------------------------------------------------------------
-    //metoder
-
-    public void updateFadList() {
-//        lvwFad.getItems().setAll(controller.getFadList());
-    }
 
     private void selectedFadChanged() {
         this.updateControls();
     }
 
 
-//    private void opretWhiskyAction() {
-//        Fad selectedFad = lvwFad.getSelectionModel().getSelectedItem();
-//        if (selectedFad == null) {
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Mangler fad");
-//            alert.setContentText("Du mangler at vælger hvilke fade du vil danne whisky af");
-//            alert.showAndWait();
-//        } else {
-//            double mængde = selectedFad.samletMængde();
-//            Whisky whisky = controller.createWhisky(mængde);
-//            for (Destillat d : selectedFad.getDestillater()) {
-//                whisky.addDestillat(d);
-//            }
-//            selectedFad.tømFad();
-//            updateControls();
-//        }
-//    }
     private void opretWhiskyAction() {
         ObservableList<Fad> selectedFade = lvwFad.getSelectionModel().getSelectedItems();
         if (selectedFade.isEmpty()) {
@@ -108,17 +83,7 @@ public class WhiskyWindow extends Stage {
             alert.setContentText("Du mangler at vælge, hvilke fade du vil danne whisky af");
             alert.showAndWait();
         } else {
-            double totalMængde = 0;
-            for (Fad f : selectedFade) {
-                totalMængde += f.samletMængde();
-            }
-            Whisky whisky = controller.createWhisky(totalMængde);
-            for (Fad f : selectedFade) {
-                for (Destillat d : f.getDestillater()) {
-                    whisky.addDestillat(d);
-                }
-                f.tømFad();
-            }
+            controller.whiskeyAction(selectedFade);
             updateControls();
         }
     }
@@ -127,10 +92,8 @@ public class WhiskyWindow extends Stage {
 
     private void updateControls() {
         Fad fad = (Fad) lvwFad.getSelectionModel().getSelectedItem();
-//        Destillat destillat = (Destillat) lvwDestillat.getSelectionModel().getSelectedItem();
         if (fad != null && fad.getDestillater() != null) {
             txaDestillat.setText(fad.getDestillater().toString());
-            lvwDestillat.getItems().setAll(fad.getDestillater());
         } else {
             txaDestillat.clear();
         }

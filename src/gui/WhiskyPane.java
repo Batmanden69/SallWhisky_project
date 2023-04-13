@@ -52,7 +52,7 @@ public class WhiskyPane extends GridPane {
         ChangeListener<Destillat> listener2 = (ov, oldDestillat, newDestillat) -> this.selectedDestillatChanged();
         lvwDestillat.getSelectionModel().selectedItemProperty().addListener(listener2);
 
-        Label lblLagringshistorik = new Label("Lagrings historik");
+        Label lblLagringshistorik = new Label("Lagringshistorik");
         lblLagringshistorik.setFont(new Font("Arial", 20));
         add(lblLagringshistorik, 2, 0, 2, 1);
 
@@ -86,7 +86,6 @@ public class WhiskyPane extends GridPane {
 
     private void opretWhiskyKnap() {
         WhiskyWindow window = new WhiskyWindow();
-        window.updateFadList();
         window.showAndWait();
 
     }
@@ -118,5 +117,8 @@ public class WhiskyPane extends GridPane {
             lvwLagring.getItems().clear();
         }
     }
+
+
+
 }
 

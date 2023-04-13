@@ -89,7 +89,6 @@ public class LagerPane extends GridPane {
             }
         });
 
-
         GridPane buttonGrid = new GridPane();
         buttonGrid.add(btnTilføj, 0, 0);
 

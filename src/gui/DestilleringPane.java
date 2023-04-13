@@ -136,15 +136,11 @@ public class DestilleringPane extends GridPane {
                     destillering.hældPåFad2(selectedFad, Double.parseDouble(txfMængde.getText()));
                     updateDestilleringListview();
                     txfMængde.setText("");
-
                     dialog.close();
                 } catch (RuntimeException e) {
                     throw new RuntimeException(e.getMessage());
                 }
-
-
             }
-
         });
 
         GridPane inputGrid = new GridPane();
@@ -154,24 +150,15 @@ public class DestilleringPane extends GridPane {
         inputGrid.add(txfMængde, 1, 2);
         inputGrid.add(hældBtn, 2, 3);
 
-
-        dialog.getDialogPane().
-
-                setContent(inputGrid);
-        dialog.getDialogPane().
-
-                getButtonTypes().
-
-                addAll(ButtonType.CANCEL);
+        dialog.getDialogPane().setContent(inputGrid);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
         dialog.showAndWait();
-
     }
 
 
     private void updateDestilleringListview() {
         lvwDestilleringer.getItems().setAll(Controller.getInstance().getDestilleringList());
     }
-
 
     public void updateControls() {
         // TODO Auto-generated method stub

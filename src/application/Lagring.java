@@ -55,17 +55,9 @@ public class Lagring {
         }
     }
 
-    public LocalDate getSlutDato() {
-        return slutDato;
-    }
-
     public LocalDate getStartDato() {
         return startDato;
     }
-
-//    public void setStartDato(LocalDate startDato) {
-//        this.startDato = startDato;
-//    }
 
     public long getLagringsperiode() {
         long daysBetween;
@@ -79,7 +71,7 @@ public class Lagring {
 
     @Override
     public String toString() {
-        return "Fad: " + fad + ",    " + destillat + ",    " + "Lagringsperiode: " + getLagringsperiode() + " dage";
+        return "Fad: " + fad + "\n" + destillat + "\n" + "Lagringsperiode: " + getLagringsperiode() + " dage";
     }
 
 }

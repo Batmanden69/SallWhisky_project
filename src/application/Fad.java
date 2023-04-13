@@ -45,19 +45,6 @@ public class Fad {
         }
     }
 
-
-    public ArrayList<Lagring> getNuværendeIndhold() {
-        ArrayList<Lagring> results = new ArrayList<>();
-        if (antalLiterLedig() == størrelse)
-            return null;
-        else {
-            for (Lagring lagring : lagringList) {
-                results.add(lagring);
-            }
-            return results;
-        }
-    }
-
     public ArrayList<Destillat> getDestillater() {
         ArrayList<Destillat> results = new ArrayList<>();
         if (antalLiterLedig() == størrelse)
@@ -70,21 +57,6 @@ public class Fad {
         }
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getStørrelse() {
-        return størrelse;
-    }
-
-    public void setStørrelse(double størrelse) {
-        this.størrelse = størrelse;
-    }
 
     public double getAntalLiterPåfyldt() {
         return antalLiterPåfyldt;
@@ -92,10 +64,6 @@ public class Fad {
 
     public void setAntalLiterPåfyldt(double antalLiterPåfyldt) {
         this.antalLiterPåfyldt = antalLiterPåfyldt;
-    }
-
-    public String getFadType() {
-        return fadType;
     }
 
     public Plads getPlads() {
@@ -106,28 +74,10 @@ public class Fad {
         return new ArrayList<>(lagringList);
     }
 
-    public void setFadType(String fadType) {
-        this.fadType = fadType;
-    }
-
-    public String getLeverandør() {
-        return leverandør;
-    }
-
-    public void setLeverandør(String leverandør) {
-        this.leverandør = leverandør;
-    }
-
-    public void setPlads(Plads plads) {
-        if (this.plads != plads) {
-            this.plads = plads;
-        }
-    }
 
     public void removeLagring(Lagring lagring) {
         if (lagringList.contains(lagring)) {
             lagringList.remove(lagring);
-//            lagring.setFad(this);
         }
     }
 
@@ -154,7 +104,6 @@ public class Fad {
         }
     }
 
-
     public double antalLiterLedig() {
         return størrelse - antalLiterPåfyldt;
     }
@@ -168,7 +117,6 @@ public class Fad {
     public void tømFad() {
         tømt = true;
         antalLiterPåfyldt = 0;
-        this.getNuværendeIndhold().clear();
     }
 
     public void omhældFad2(Fad nytFad) {
@@ -192,7 +140,6 @@ public class Fad {
         }
         return sum;
     }
-
 
     public int getFadId() {
         return id;

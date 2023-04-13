@@ -16,14 +16,6 @@ public class Whisky {
         count++;
     }
 
-    public int getBatchId() {
-        return batchId;
-    }
-
-    public double getAntalLiter() {
-        return antalLiter;
-    }
-
     public ArrayList<Destillat> getDestillatList() {
         return new ArrayList<>(destillatList);
     }
@@ -31,7 +23,6 @@ public class Whisky {
     public void addDestillat(Destillat destillat) {
         if (!destillatList.contains(destillat)) {
             destillatList.add(destillat);
-//            destillat.getDestillatHistorik().get(destillat.getDestillatHistorik().size()-1).setSlutDato(LocalDate.now());
         }
     }
 
@@ -39,25 +30,6 @@ public class Whisky {
         if (destillatList.contains(destillat)) {
             destillatList.remove(destillat);
         }
-    }
-
-
-    public ArrayList<Fad> fadHistorik() {
-        ArrayList<Fad> fadHistorik = new ArrayList<>();
-        for (Destillat d : getDestillatList()) {
-            for (Lagring l : d.getDestillatHistorik()) {
-                fadHistorik.add(l.getFad());
-            }
-        }
-        return fadHistorik;
-    }
-
-    public ArrayList<Destillering> destilleringHistorik() {
-        ArrayList<Destillering> destilleringHistorik = new ArrayList<>();
-        for (Destillat d : getDestillatList()) {
-            destilleringHistorik.add(d.getDestillering());
-        }
-        return destilleringHistorik;
     }
 
     public ArrayList<Lagring> lagringHistorik() {

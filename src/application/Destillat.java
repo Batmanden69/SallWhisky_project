@@ -1,12 +1,11 @@
 package application;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Destillat {
     private ArrayList<Lagring> destillatHistorik = new ArrayList<>();
     private Destillering destillering;
-    private int destillatId;
+    private final int destillatId;
     private static int count = 1;
     private double mængde;
 
@@ -32,10 +31,6 @@ public class Destillat {
         }
     }
 
-    public int getDestillatId() {
-        return destillatId;
-    }
-
 
     public ArrayList<Lagring> getDestillatHistorik() {
         return new ArrayList<>(destillatHistorik);
@@ -47,10 +42,6 @@ public class Destillat {
 
     public double getMængde() {
         return mængde;
-    }
-
-    public void setMængde(int mængde) {
-        this.mængde = mængde;
     }
 
     public void addLagring(Lagring lagring) {
@@ -103,9 +94,9 @@ public class Destillat {
 
     @Override
     public String toString() {
-        return "\n DestillatID: " + destillatId +
-                "\nNew Make Nummer: " + destillering.getNewMakeNr() + ",    " +
-                mængde + " liter" + "\n ----------------------------------";
+        return "DestillatID: " + destillatId +
+                "\nNew Make Nummer: " + destillering.getNewMakeNr() + ", \n" +
+                mængde + " liter";
     }
 
 
