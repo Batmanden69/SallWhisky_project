@@ -29,8 +29,8 @@ public class Controller {
         return Storage.getInstance().getFadList();
     }
 
-    public Whisky createWhisky(int batchId, double mængde) {
-        Whisky whisky = new Whisky(batchId, mængde);
+    public Whisky createWhisky(double mængde) {
+        Whisky whisky = new Whisky(mængde);
         Storage.getInstance().addWhisky(whisky);
         return whisky;
     }
@@ -130,7 +130,7 @@ public class Controller {
 
 //        System.out.println(fad1.getLagringList());
 
-        Whisky whisky1 = createWhisky(2, 300);
+        Whisky whisky1 = createWhisky(300);
         whisky1.addDestillat(destillat1);
 
     }
