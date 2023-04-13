@@ -51,6 +51,7 @@ public class OversigtPane extends GridPane {
         txaDestillering.setPrefSize(200, 200);
         txaDestillering.setEditable(false);
         txaLagring.setPrefSize(200, 200);
+        txaLagring.setEditable(false);
 
 
         lvwFade.getItems().setAll(controller.getFadList());

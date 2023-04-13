@@ -31,6 +31,7 @@ public class WhiskyWindow extends Stage {
 
     private ListView<Fad> lvwFad;
     private ListView<Destillat> lvwDestillat;
+    private TextArea txaDestillat;
     private Controller controller;
 
     private Button opretWhiskyBtn;
@@ -48,6 +49,8 @@ public class WhiskyWindow extends Stage {
 
         lvwFad = new ListView<>();
         pane.add(lvwFad, 0, 2);
+        lvwFad.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        lvwFad.getItems().setAll(controller.klarFad());
 
         ChangeListener<Fad> listener = (ov, oldFad, newFad) -> this.selectedFadChanged();
         lvwFad.getSelectionModel().selectedItemProperty().addListener(listener);
@@ -56,8 +59,9 @@ public class WhiskyWindow extends Stage {
         lblDestillat.setFont(new Font("Arial", 20));
         pane.add(lblDestillat, 1, 1);
 
-        lvwDestillat = new ListView<>();
-        pane.add(lvwDestillat, 1, 2);
+        txaDestillat = new TextArea();
+        pane.add(txaDestillat, 1, 2);
+        txaDestillat.setEditable(false);
 
         opretWhiskyBtn = new Button("Opret whisky");
         pane.add(opretWhiskyBtn, 2, 1);
@@ -70,7 +74,7 @@ public class WhiskyWindow extends Stage {
     //metoder
 
     public void updateFadList() {
-        lvwFad.getItems().setAll(controller.getFadList());
+//        lvwFad.getItems().setAll(controller.getFadList());
     }
 
     private void selectedFadChanged() {
@@ -136,11 +140,12 @@ public class WhiskyWindow extends Stage {
 
     private void updateControls() {
         Fad fad = (Fad) lvwFad.getSelectionModel().getSelectedItem();
-        Destillat destillat = (Destillat) lvwDestillat.getSelectionModel().getSelectedItem();
+//        Destillat destillat = (Destillat) lvwDestillat.getSelectionModel().getSelectedItem();
         if (fad != null && fad.getDestillater() != null) {
+            txaDestillat.setText(fad.getDestillater().toString());
             lvwDestillat.getItems().setAll(fad.getDestillater());
         } else {
-            lvwDestillat.getItems().clear();
+            txaDestillat.clear();
         }
     }
 }
