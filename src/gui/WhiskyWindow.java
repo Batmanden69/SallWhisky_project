@@ -109,8 +109,11 @@ public class WhiskyWindow extends Stage {
                 int batchId2 = Integer.parseInt(batchId);
                 double mængde = selectedFad.samletMængde();
                 Whisky whisky = controller.createWhisky(batchId2, mængde);
-                for (Destillat d : selectedFad.getDestillater()) {
-                    whisky.addDestillat(d);
+                for (Fad f : lvwFad.getItems()) {
+                    for (Destillat d :f.getDestillater()) {
+                        whisky.addDestillat(d);
+                        
+                    }
                 }
 
                 selectedFad.tømFad();

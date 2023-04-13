@@ -126,6 +126,7 @@ public class Controller {
         destillering1.hældPåFad2(fad2, 20);
 
         fad1.getDestillater().get(0).getDestillatHistorik().get(0).setSlutDato(LocalDate.of(2030, 1, 1));
+        fad2.getDestillater().get(0).getDestillatHistorik().get(0).setSlutDato(LocalDate.of(2030, 1, 1));
 
 //        System.out.println(fad1.getLagringList());
 
